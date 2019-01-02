@@ -10,6 +10,9 @@ navbar:
         - text: "Sprawy organizacyjne"
           href: sprawyorganizacyjne.html
     - text: "Dzień 2"
+      menu:
+        - text: "Sprawy organizacyjne"
+          href: sprawyorganizacyjne.html
 
 
 

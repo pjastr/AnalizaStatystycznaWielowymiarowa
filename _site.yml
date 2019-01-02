@@ -1,0 +1,17 @@
+name: "Analiza-statystyczna-wielowymiarowa"
+output_dir: "."
+navbar:
+  title: "Analiza statystyczna wielowymiarowa"
+  left:
+    - text: "Strona główna"
+      href: index.html
+    - text: "Dzień 1"
+      menu:
+        - text: "Sprawy organizacyjne"
+          href: sprawyorganizacyjne.html
+    - text: "Dzień 2"
+
+
+
+
+

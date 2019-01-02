@@ -2,7 +2,6 @@
 title: "Analiza statystyczna wielowymiarowa"
 output:
   html_document: default
-  word_document: default
   pdf_document: default
 header-includes: \usepackage[polish]{babel}
 ---
@@ -22,7 +21,7 @@ header-includes: \usepackage[polish]{babel}
 
 # Analiza statystyczna wielowymiarowa
 
-[Wersja pdf](index.pdf) / [Wersja Word](index.doc)
+[Wersja pdf](index.pdf)
 
 Strona zawierały materiały przygotowane na przedmiot "Analiza statystyczna wielowymiarowa" realizowanego w ramach studiów podyplomowych "Zaawansowane Metody Analizy Danych i Data Mining w Biznesie" na WMiI UWM w Olsztynie.
 

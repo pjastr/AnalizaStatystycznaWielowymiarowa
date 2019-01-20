@@ -99,6 +99,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -113,7 +116,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -133,6 +135,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -154,18 +193,77 @@ $(document).ready(function () {
 });
 </script>
 
-
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -297,6 +395,12 @@ div.tocify {
     <li>
       <a href="sprawyorganizacyjne.html">Sprawy organizacyjne</a>
     </li>
+    <li>
+      <a href="regresjawielowymiarowa.html">Regresja wielowymiarowa</a>
+    </li>
+    <li>
+      <a href="modelliniowy.html">Model liniowy</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -350,8 +454,7 @@ div.tocify {
 <li>Liczba godzin: 6 godz. (wykład) + 8 godz. (ćwiczenia).</li>
 <li>Liczba punktów ECTS: 2.</li>
 <li>Forma zaliczenia: zaliczenie na ocenę.</li>
-<li>Konsultacje stacjonarne: środa 11:00-12:30, p. A2/14 (Słoneczna 54).</li>
-<li>Konsultacje online: maile są na stronie www.</li>
+<li>Konsultacje: informacje są dostępne są na stronie www w domenie wmii.</li>
 </ul>
 <div id="tresci-zajec" class="section level2">
 <h2>Treści zajęć</h2>
@@ -389,6 +492,11 @@ div.tocify {
 <h2>Literatura</h2>
 <ul>
 <li>P. Biecek, Przewodnik po pakiecie R, Oficyna Wydawnicza GiS, 2017.</li>
+<li>J. Syska, Współczesne metody analizy regresji wspomagane komputerowo, dostęp online 19.01.2019, <a href="https://el.us.edu.pl/ekonofizyka/images/b/b6/MetodyDoboruModeli.pdf" class="uri">https://el.us.edu.pl/ekonofizyka/images/b/b6/MetodyDoboruModeli.pdf</a> .</li>
+<li><a href="https://en.wikipedia.org/wiki/Ordinary_least_squares" class="uri">https://en.wikipedia.org/wiki/Ordinary_least_squares</a></li>
+<li><a href="http://facweb.cs.depaul.edu/sjost/csc423/documents/f-test-reg.htm" class="uri">http://facweb.cs.depaul.edu/sjost/csc423/documents/f-test-reg.htm</a></li>
+<li><a href="http://web.thu.edu.tw/wichuang/www/Financial%20Econometrics/Lectures/CHAPTER%208.pdf">http://web.thu.edu.tw/wichuang/www/Financial%20Econometrics/Lectures/CHAPTER%208.pdf</a></li>
+<li>S. J. Sheather, A Modern Approach to Regression with R, Springer 2009.</li>
 </ul>
 </div>
 </div>

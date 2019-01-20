@@ -9,6 +9,10 @@ navbar:
       menu:
         - text: "Sprawy organizacyjne"
           href: sprawyorganizacyjne.html
+        - text: "Regresja wielowymiarowa"
+          href: regresjawielowymiarowa.html
+        - text: "Model liniowy"
+          href: modelliniowy.html
     - text: "Dzień 2"
       menu:
         - text: "Sprawy organizacyjne"

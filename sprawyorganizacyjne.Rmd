@@ -37,8 +37,7 @@ header-includes: \usepackage[polish]{babel}
 * Liczba godzin: 6 godz. (wykład) + 8 godz. (ćwiczenia).
 * Liczba punktów ECTS: 2.
 * Forma zaliczenia: zaliczenie na ocenę.
-* Konsultacje stacjonarne: środa 11:00-12:30, p. A2/14 (Słoneczna 54).
-* Konsultacje online: maile są na stronie www. 
+* Konsultacje: informacje są dostępne są na stronie www w domenie wmii.
 
 ## Treści zajęć
 
@@ -76,6 +75,11 @@ Wykład:
 ## Literatura
 
 * P. Biecek, Przewodnik po pakiecie R, Oficyna Wydawnicza GiS, 2017.
+* J. Syska, Współczesne metody analizy regresji wspomagane komputerowo,  dostęp online 19.01.2019, https://el.us.edu.pl/ekonofizyka/images/b/b6/MetodyDoboruModeli.pdf .
+* https://en.wikipedia.org/wiki/Ordinary_least_squares
+* http://facweb.cs.depaul.edu/sjost/csc423/documents/f-test-reg.htm
+* http://web.thu.edu.tw/wichuang/www/Financial%20Econometrics/Lectures/CHAPTER%208.pdf
+* S. J. Sheather, A Modern Approach to Regression with R, Springer 2009.
 
 
 

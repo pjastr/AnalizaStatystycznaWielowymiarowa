@@ -13,6 +13,8 @@ navbar:
           href: regresjawielowymiarowa.html
         - text: "Model liniowy"
           href: modelliniowy.html
+        - text: "Model liniowy - ćw."
+          href: modelliniowycw.html
     - text: "Dzień 2"
       menu:
         - text: "Sprawy organizacyjne"

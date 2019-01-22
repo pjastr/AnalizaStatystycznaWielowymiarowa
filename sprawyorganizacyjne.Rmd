@@ -76,12 +76,12 @@ Wykład:
 
 * P. Biecek, Przewodnik po pakiecie R, Oficyna Wydawnicza GiS, 2017.
 * J. Syska, Współczesne metody analizy regresji wspomagane komputerowo,  dostęp online 19.01.2019, https://el.us.edu.pl/ekonofizyka/images/b/b6/MetodyDoboruModeli.pdf .
-* https://en.wikipedia.org/wiki/Ordinary_least_squares
-* http://facweb.cs.depaul.edu/sjost/csc423/documents/f-test-reg.htm
-* http://web.thu.edu.tw/wichuang/www/Financial%20Econometrics/Lectures/CHAPTER%208.pdf
+* https://en.wikipedia.org/wiki/Ordinary_least_squares, dostęp online 19.01.2019.
+* http://facweb.cs.depaul.edu/sjost/csc423/documents/f-test-reg.htm, dostęp online 19.01.2019.
+* http://web.thu.edu.tw/wichuang/www/Financial%20Econometrics/Lectures/CHAPTER%208.pdf, dostęp online 19.01.2019.
 * S. J. Sheather, A Modern Approach to Regression with R, Springer 2009.
-* https://stats.stackexchange.com/questions/5135/interpretation-of-rs-lm-output
-* http://www.sthda.com/english/articles/40-regression-analysis/168-multiple-linear-regression-in-r/
+* https://stats.stackexchange.com/questions/5135/interpretation-of-rs-lm-output, dostęp online 19.01.2019.
+* http://www.sthda.com/english/articles/40-regression-analysis/168-multiple-linear-regression-in-r/, dostęp online 19.01.2019.
 
 
 

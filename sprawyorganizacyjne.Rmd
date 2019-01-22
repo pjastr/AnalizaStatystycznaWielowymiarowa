@@ -80,6 +80,8 @@ Wykład:
 * http://facweb.cs.depaul.edu/sjost/csc423/documents/f-test-reg.htm
 * http://web.thu.edu.tw/wichuang/www/Financial%20Econometrics/Lectures/CHAPTER%208.pdf
 * S. J. Sheather, A Modern Approach to Regression with R, Springer 2009.
+* https://stats.stackexchange.com/questions/5135/interpretation-of-rs-lm-output
+* http://www.sthda.com/english/articles/40-regression-analysis/168-multiple-linear-regression-in-r/
 
 
 

@@ -11,7 +11,7 @@
 
 
 
-<title>Analiza statystyczna wielowymiarowa</title>
+<title>Dzień 1 - Model liniowy - grafika</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -264,6 +267,107 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -341,7 +445,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Analiza statystyczna wielowymiarowa</h1>
+<h1 class="title toc-ignore">Dzień 1 - Model liniowy - grafika</h1>
 
 </div>
 
@@ -351,28 +455,33 @@ $(document).ready(function () {
   display: none;
 }
 
+.table {
+    width:70%;
+}
+
 #getting-started img {
   margin-right: 10px;
 }
 
 </style>
-<div class="row" style="padding-top: 30px;">
-<div class="col-sm-6">
-<h1 id="analiza-statystyczna-wielowymiarowa">Analiza statystyczna wielowymiarowa</h1>
-<p><a href="index.pdf">Wersja pdf</a></p>
-<p>Strona zawierały materiały przygotowane na przedmiot “Analiza statystyczna wielowymiarowa” realizowanego w ramach studiów podyplomowych “Zaawansowane Metody Analizy Danych i Data Mining w Biznesie” na WMiI UWM w Olsztynie.</p>
-<p>Opracowanie materiałów: dr Piotr Jastrzębski</p>
-<p>Strona domowa <a href="http://wmii.uwm.edu.pl/~piojas/" class="uri">http://wmii.uwm.edu.pl/~piojas/</a></p>
+<div id="model-liniowy---grafika" class="section level1">
+<h1>Model liniowy - grafika</h1>
+<p><a href="modelliniowygrafika.pdf">Wersja pdf</a></p>
+<p>Załadujmy w R jak poprzednio:</p>
+<pre class="r"><code>library(tidyverse)
+devtools::install_github(&quot;kassambara/datarium&quot;)
+data(&quot;marketing&quot;, package = &quot;datarium&quot;)
+model &lt;- lm(sales ~ youtube + facebook + newspaper, data = marketing)</code></pre>
+<pre class="r"><code>plot(model)</code></pre>
+<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-1.png" width="672" /><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-2.png" width="672" /><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-3.png" width="672" /><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
+<a href="https://data.library.virginia.edu/diagnostic-plots/" class="uri">https://data.library.virginia.edu/diagnostic-plots/</a> <a href="https://www.andrew.cmu.edu/user/achoulde/94842/homework/regression_diagnostics.html" class="uri">https://www.andrew.cmu.edu/user/achoulde/94842/homework/regression_diagnostics.html</a> <a href="https://stats.stackexchange.com/questions/58141/interpreting-plot-lm" class="uri">https://stats.stackexchange.com/questions/58141/interpreting-plot-lm</a>
 </div>
-<div class="col-sm-6">
-
-<div class="figure">
-<img src="asw.jpg" />
-
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 

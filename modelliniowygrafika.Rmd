@@ -1,0 +1,53 @@
+---
+title: "Dzień 1 - Model liniowy - grafika"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 5
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+  pdf_document:
+    toc: yes
+    toc_depth: '5'
+header-includes: \usepackage[polish]{babel}
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+.table {
+    width:70%;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+
+
+# Model liniowy - grafika
+
+[Wersja pdf](modelliniowygrafika.pdf) 
+
+Załadujmy w R jak poprzednio:
+
+```{r message=FALSE}
+library(tidyverse)
+devtools::install_github("kassambara/datarium")
+data("marketing", package = "datarium")
+model <- lm(sales ~ youtube + facebook + newspaper, data = marketing)
+```
+```{r}
+
+plot(model)
+```
+
+https://data.library.virginia.edu/diagnostic-plots/
+https://www.andrew.cmu.edu/user/achoulde/94842/homework/regression_diagnostics.html
+https://stats.stackexchange.com/questions/58141/interpreting-plot-lm
+</div>
+

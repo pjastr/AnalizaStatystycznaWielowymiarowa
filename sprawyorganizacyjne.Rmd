@@ -82,6 +82,9 @@ Wykład:
 * S. J. Sheather, A Modern Approach to Regression with R, Springer 2009.
 * https://stats.stackexchange.com/questions/5135/interpretation-of-rs-lm-output, dostęp online 19.01.2019.
 * http://www.sthda.com/english/articles/40-regression-analysis/168-multiple-linear-regression-in-r/, dostęp online 19.01.2019.
+* https://data.library.virginia.edu/diagnostic-plots/, dostęp online 23.01.2019.
+* https://www.andrew.cmu.edu/user/achoulde/94842/homework/regression_diagnostics.html, dostęp online 23.01.2019.
+* https://stats.stackexchange.com/questions/58141/interpreting-plot-lm, dostęp online 23.01.2019.
 
 
 

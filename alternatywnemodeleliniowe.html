@@ -11,7 +11,7 @@
 
 
 
-<title>Dzień 1 - Model liniowy - grafika</title>
+<title>Dzień 1 - Alternatywne modele liniowe</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -457,7 +457,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Dzień 1 - Model liniowy - grafika</h1>
+<h1 class="title toc-ignore">Dzień 1 - Alternatywne modele liniowe</h1>
 
 </div>
 
@@ -476,69 +476,29 @@ div.tocify {
 }
 
 </style>
-<div id="model-liniowy---grafika" class="section level1">
-<h1>Model liniowy - grafika</h1>
-<p><a href="modelliniowygrafika.pdf">Wersja pdf</a></p>
-<p>Załadujmy w R jak poprzednio:</p>
-<pre class="r"><code>library(tidyverse)
-devtools::install_github(&quot;kassambara/datarium&quot;)
-data(&quot;marketing&quot;, package = &quot;datarium&quot;)
-model &lt;- lm(sales ~ youtube + facebook + newspaper, data = marketing)</code></pre>
-<pre class="r"><code>plot(model)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-1.png" width="672" /><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-2.png" width="672" /><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-3.png" width="672" /><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
-<div id="wykres-1" class="section level2">
-<h2>Wykres 1</h2>
-<p>Przeanalizujmy pierwszy wykres:</p>
-<pre class="r"><code>plot(model, which = 1)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>Ręcznie możemy to uzyskać:</p>
-<pre class="r"><code>plot(model$fitted.values, model$residuals,  ylab = &quot;Residuals&quot;, xlab = &quot;Fitted values&quot;, )
-lines(lowess(model$fitted.values, model$residuals), col=&#39;red&#39;, lwd=2)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>Wyjaśnienie na rysunku:</p>
-<div class="figure">
-<img src="g1.png" />
-
+<div id="alternatywne-modele-liniowe" class="section level1">
+<h1>Alternatywne modele liniowe</h1>
+<p><a href="alternatywnemodeleliniowe.pdf">Wersja pdf</a></p>
+<p><strong>Resistant regression</strong></p>
+<p><code>lqs</code> - używana przy wartościach skrajnych.</p>
+<p><strong>Robust regression</strong></p>
+<p><code>rlm</code> - używana przy heteroscedastyczności i przy wartościach skrajnych.</p>
+<p>Przykład do samodzielnego przeanalizowania:</p>
+<pre class="r"><code>library(MASS)
+library(nutshell)</code></pre>
+<pre><code>## Loading required package: nutshell.bbdb</code></pre>
+<pre><code>## Loading required package: nutshell.audioscrobbler</code></pre>
+<pre class="r"><code>data(shiller)
+hpi.lm &lt;- lm(Real.Home.Price.Index~Year, data=shiller.index)
+hpi.rlm &lt;- rlm(Real.Home.Price.Index~Year, data=shiller.index)
+hpi.lqs &lt;- lqs(Real.Home.Price.Index~Year, data=shiller.index)
+plot(shiller.index$Year,shiller.index$Real.Home.Price.Index, pch=19, cex=0.3, ylab=&quot;Index&quot;, xlab=&quot;Year&quot;)
+lines(shiller.index$Year,hpi.lm$fitted.values, lty=1)
+lines(shiller.index$Year,hpi.rlm$fitted.values, lty=2)
+lines(shiller.index$Year,hpi.lqs$fitted.values, lty=3)
+legend(x=1900, y=200, legend=c(&quot;lm&quot;, &quot;rlm&quot;, &quot;lqs&quot;), lty=c(1, 2, 3))</code></pre>
+<img src="alternatywnemodeleliniowe_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 </div>
-<p><sub><sup>źródło zdjęcia: <a href="https://stats.stackexchange.com/questions/76226/interpreting-the-residuals-vs-fitted-values-plot-for-verifying-the-assumptions" class="uri">https://stats.stackexchange.com/questions/76226/interpreting-the-residuals-vs-fitted-values-plot-for-verifying-the-assumptions</a></sub></p>
-</div>
-<div id="wykres-2" class="section level2">
-<h2>Wykres 2</h2>
-<pre class="r"><code>plot(model, which = 2)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>Wykres Q-Q (kwantylowo-kwantylowy) informuje, na ile dopasowanie odbiega od rozkładu normalnego.</p>
-</div>
-<div id="wykres-3" class="section level2">
-<h2>Wykres 3</h2>
-<pre class="r"><code>plot(model, which = 3)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>Ten wykres pokazuje, czy reszty są równomiernie rozłożone wzdłuż zakresów dopasowanych wartości. W ten sposób można sprawdzić założenie równej wariancji (homoscedastyczność). To dobrze, jeśli jest linia pozioma z równomiernie umieszczonymi punktami.</p>
-</div>
-<div id="wykres-5" class="section level2">
-<h2>Wykres 5</h2>
-<pre class="r"><code>plot(model, which = 5)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>Wykres pokazuje jednorodność wariancji. Cel: linia ciągła jest pozioma, punkty równomiernie rozłożone, brak linii przerywanej. Dokładniejsze wytłumaczenie: <a href="http://prac.im.pwr.wroc.pl/~sobczyk/dydaktyka/diagnostyka_regresji.pdf">link</a>.</p>
-</div>
-</div>
-<div id="cwiczenia" class="section level1">
-<h1>Ćwiczenia</h1>
-<ol style="list-style-type: decimal">
-<li>Wygerenuj w R idealny rozkład zgodny z liniową regresją wielokrotną np. za pomocą kod:</li>
-</ol>
-<pre class="r"><code>n &lt;- 1000      
-x1 &lt;- runif(n, min = 0, max = 100)
-x2 &lt;- runif(n, min = 0, max = 100)
-y.good &lt;- 5 + 0.2 * x1+14*x2 + rnorm(n, sd = 3)</code></pre>
-<p>Przetestuj model i przeanalizuj wykresy.</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Przetestuj błędny model np.</li>
-</ol>
-<pre class="r"><code>y.bad&lt;-5+sin(x1)+x2*x2+rnorm(n,sd=4)</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Przeanalizuj wykresy dla ramek danych ze wcześniejszych ćwiczeń.
-</div></li>
-</ol>
 </div>
 
 

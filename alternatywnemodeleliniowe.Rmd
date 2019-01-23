@@ -1,0 +1,60 @@
+---
+title: "Dzień 1 - Alternatywne modele liniowe"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 5
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+  pdf_document:
+    toc: yes
+    toc_depth: '5'
+header-includes: \usepackage[polish]{babel}
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+.table {
+    width:70%;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+
+
+# Alternatywne modele liniowe
+
+[Wersja pdf](alternatywnemodeleliniowe.pdf) 
+
+**Resistant regression**
+
+`lqs` - używana przy wartościach skrajnych.
+
+**Robust regression**
+
+`rlm` - używana przy heteroscedastyczności i przy wartościach skrajnych.
+
+Przykład do samodzielnego przeanalizowania:
+
+```{r}
+library(MASS)
+library(nutshell)
+data(shiller)
+hpi.lm <- lm(Real.Home.Price.Index~Year, data=shiller.index)
+hpi.rlm <- rlm(Real.Home.Price.Index~Year, data=shiller.index)
+hpi.lqs <- lqs(Real.Home.Price.Index~Year, data=shiller.index)
+plot(shiller.index$Year,shiller.index$Real.Home.Price.Index, pch=19, cex=0.3, ylab="Index", xlab="Year")
+lines(shiller.index$Year,hpi.lm$fitted.values, lty=1)
+lines(shiller.index$Year,hpi.rlm$fitted.values, lty=2)
+lines(shiller.index$Year,hpi.lqs$fitted.values, lty=3)
+legend(x=1900, y=200, legend=c("lm", "rlm", "lqs"), lty=c(1, 2, 3))
+```
+</div>
+

@@ -17,6 +17,14 @@ navbar:
           href: modelliniowycw.html
         - text: "Model liniowy - grafika"
           href: modelliniowygrafika.html
+        - text: "Model liniowy - prognozowanie"
+          href: modelliniowyprognozowanie.html
+        - text: "Alternatywne modele liniowe"
+          href: alternatywnemodeleliniowe.html
+        - text: "Model nieliniowy - lm"
+          href: modelnieliniowylm.html
+        - text: "Model nieliniowy - nls"
+          href: modelnieliniowynls.html
     - text: "Dzień 2"
       menu:
         - text: "Sprawy organizacyjne"

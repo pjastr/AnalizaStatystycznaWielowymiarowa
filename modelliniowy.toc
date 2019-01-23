@@ -1,10 +1,10 @@
 \babel@toc {polish}{}
-\contentsline {section}{Model liniowy}{1}{section*.2}
-\contentsline {subsection}{Wsp\IeC {\'o}\IeC {\l }czynniki w modelu}{2}{section*.3}
-\contentsline {subsection}{B\IeC {\l }\IeC {\k a}d standardowy regresji}{4}{section*.4}
-\contentsline {subsection}{``Dobro\IeC {\'c}'' dopasowania}{6}{section*.5}
-\contentsline {subsection}{F-test}{7}{section*.6}
-\contentsline {subsection}{t-test}{9}{section*.7}
-\contentsline {section}{Inne zapisy}{11}{section*.8}
-\contentsline {section}{Za\IeC {\l }o\IeC {\.z}enia modelu}{12}{section*.9}
-\contentsline {section}{Na koniec}{12}{section*.10}
+\contentsline {section}{Model liniowy}{1}{section*.2}% 
+\contentsline {subsection}{Wsp\IeC {\'o}\IeC {\l }czynniki w modelu}{2}{section*.3}% 
+\contentsline {subsection}{B\IeC {\l }\IeC {\k a}d standardowy regresji}{4}{section*.4}% 
+\contentsline {subsection}{``Dobro\IeC {\'c}'' dopasowania}{6}{section*.5}% 
+\contentsline {subsection}{F-test}{7}{section*.6}% 
+\contentsline {subsection}{t-test}{9}{section*.7}% 
+\contentsline {section}{Inne zapisy}{11}{section*.8}% 
+\contentsline {section}{Za\IeC {\l }o\IeC {\.z}enia modelu}{12}{section*.9}% 
+\contentsline {section}{Na koniec}{12}{section*.10}% 

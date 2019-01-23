@@ -81,15 +81,6 @@ siebie.
 * Rozpatrzenie możliwości otrzymania badanego skutku, jako
 przejawu działania różnych przyczyn oraz możliwości wystąpienia kilku skutków jednej przyczyny.
 
-**Wybór metody współzależności wielu zmiennych:**
-
-| Metoda analizy       | Zmienna objaśniana           | Zmienne objaśniające |
-| ------------- | ------------- | ----- |
-| Regresja wieloraka    | ciągła | ciągłe (dopuszcza się także dyskretne) |
-| Analiza wariancji     | ciągła      |   jakościowe |
-| Analiza kowariancji | ciągła      | jakościowe (symboliczne) i ciągłe |
-| Regresja Poissona | dyskretna     | różne typy |
-| Regresja logistyczna | dwuwartościowa    | różne typy |
 
 Najczęściej stosowane funkcje w analizie regresji:
 

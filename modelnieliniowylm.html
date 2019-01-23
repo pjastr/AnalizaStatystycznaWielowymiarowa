@@ -11,7 +11,7 @@
 
 
 
-<title>Dzień 1 - Model liniowy - grafika</title>
+<title>Dzień 1 - Model nieliniowy - lm</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -457,7 +457,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Dzień 1 - Model liniowy - grafika</h1>
+<h1 class="title toc-ignore">Dzień 1 - Model nieliniowy - lm</h1>
 
 </div>
 
@@ -476,69 +476,80 @@ div.tocify {
 }
 
 </style>
-<div id="model-liniowy---grafika" class="section level1">
-<h1>Model liniowy - grafika</h1>
-<p><a href="modelliniowygrafika.pdf">Wersja pdf</a></p>
-<p>Załadujmy w R jak poprzednio:</p>
-<pre class="r"><code>library(tidyverse)
-devtools::install_github(&quot;kassambara/datarium&quot;)
-data(&quot;marketing&quot;, package = &quot;datarium&quot;)
-model &lt;- lm(sales ~ youtube + facebook + newspaper, data = marketing)</code></pre>
-<pre class="r"><code>plot(model)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-1.png" width="672" /><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-2.png" width="672" /><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-3.png" width="672" /><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
-<div id="wykres-1" class="section level2">
-<h2>Wykres 1</h2>
-<p>Przeanalizujmy pierwszy wykres:</p>
-<pre class="r"><code>plot(model, which = 1)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>Ręcznie możemy to uzyskać:</p>
-<pre class="r"><code>plot(model$fitted.values, model$residuals,  ylab = &quot;Residuals&quot;, xlab = &quot;Fitted values&quot;, )
-lines(lowess(model$fitted.values, model$residuals), col=&#39;red&#39;, lwd=2)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>Wyjaśnienie na rysunku:</p>
-<div class="figure">
-<img src="g1.png" />
-
+<div id="model-nieliniowy---lm" class="section level1">
+<h1>Model nieliniowy - lm</h1>
+<p><a href="modelnieliniowylm.pdf">Wersja pdf</a></p>
+<p>Funkcja <code>lm</code> możemy być użyta również do “nieliniowych” model. Warto zwrócić uwagę, że symbol <code>+</code> był używany w niestandardowym kontekście.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Przykład</th>
+<th>Znaczenie</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code></td>
+<td><code>+X</code></td>
+<td>dodawanie zmiennej</td>
+</tr>
+<tr class="even">
+<td><code>-</code></td>
+<td><code>-X</code></td>
+<td>usunięcie zmiennej</td>
+</tr>
+<tr class="odd">
+<td><code>:</code></td>
+<td><code>X:Y</code></td>
+<td>dodanie interakcji pomiędzy zmiennymi</td>
+</tr>
+<tr class="even">
+<td><code>*</code></td>
+<td><code>X*Y</code></td>
+<td>dodanie obu zmiennych i interakcji pomiędzy zmiennymi</td>
+</tr>
+<tr class="odd">
+<td><code>|</code></td>
+<td><code>X|Y</code></td>
+<td>warunkowość: dodanie zmiennej <span class="math inline">\(X\)</span> pod warunkiem <span class="math inline">\(Y\)</span></td>
+</tr>
+<tr class="even">
+<td><code>^</code></td>
+<td><code>(X + Y + Z)^3</code></td>
+<td>dodanie wszystkich zmiennych i interakcji między nimi</td>
+</tr>
+<tr class="odd">
+<td><code>I</code></td>
+<td><code>I(X*Y)</code></td>
+<td>dosłownie jak jest: dodanie np. mnożenia dwóch zmiennych</td>
+</tr>
+<tr class="even">
+<td><code>1</code></td>
+<td><code>X-1</code></td>
+<td>usunięcie stałej (współczynnika wolnego) z modelu</td>
+</tr>
+<tr class="odd">
+<td><code>log</code></td>
+<td><code>log(x)</code></td>
+<td>użycie logarytmu zmiennej (nie mylić z regresją logistyczną!)</td>
+</tr>
+</tbody>
+</table>
+<p>Przykład:</p>
+<ul>
+<li>wyrażenia:</li>
+</ul>
+<pre><code>Y ~ X + Z + W + X:Z + X:W + Z:W + X:Z:W
+Y ~ X * Z * W
+Y ~ (X + Z + W)^3</code></pre>
+<p>reprezentują tą samą zmienną</p>
+<p><span class="math display">\[Y_i=\beta_0 + \beta_1 X_i+\beta_2 Z_i +\beta_3 W_i+\beta_4X_iZ_i +\beta_5 X_iW_i+\beta_6 Z_iW_i+\beta_7X_iZ_iW_i+\varepsilon\]</span></p>
+<p>Jeśli mamy regresję “wielomianową” <span class="math display">\[ y = \beta_0 + \beta_1X+\beta_2X^2+\beta_3X^3 + \varepsilon ,\]</span> możemy np. dla stopnia trzeciego wyrażyć ją następująco na dwa sposoby:</p>
+<pre><code>y ~ poly(x,3)
+y ~ x + I(X^2) + I(X^3)</code></pre>
+Uwaga: w przypadku modelu z funkcją eksponencjalną w razie problemów można z własności: <span class="math display">\[y = e^{a+bx} \quad  \Longleftrightarrow\ \quad log(y) = a + bx.\]</span>
 </div>
-<p><sub><sup>źródło zdjęcia: <a href="https://stats.stackexchange.com/questions/76226/interpreting-the-residuals-vs-fitted-values-plot-for-verifying-the-assumptions" class="uri">https://stats.stackexchange.com/questions/76226/interpreting-the-residuals-vs-fitted-values-plot-for-verifying-the-assumptions</a></sub></p>
-</div>
-<div id="wykres-2" class="section level2">
-<h2>Wykres 2</h2>
-<pre class="r"><code>plot(model, which = 2)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>Wykres Q-Q (kwantylowo-kwantylowy) informuje, na ile dopasowanie odbiega od rozkładu normalnego.</p>
-</div>
-<div id="wykres-3" class="section level2">
-<h2>Wykres 3</h2>
-<pre class="r"><code>plot(model, which = 3)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>Ten wykres pokazuje, czy reszty są równomiernie rozłożone wzdłuż zakresów dopasowanych wartości. W ten sposób można sprawdzić założenie równej wariancji (homoscedastyczność). To dobrze, jeśli jest linia pozioma z równomiernie umieszczonymi punktami.</p>
-</div>
-<div id="wykres-5" class="section level2">
-<h2>Wykres 5</h2>
-<pre class="r"><code>plot(model, which = 5)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>Wykres pokazuje jednorodność wariancji. Cel: linia ciągła jest pozioma, punkty równomiernie rozłożone, brak linii przerywanej. Dokładniejsze wytłumaczenie: <a href="http://prac.im.pwr.wroc.pl/~sobczyk/dydaktyka/diagnostyka_regresji.pdf">link</a>.</p>
-</div>
-</div>
-<div id="cwiczenia" class="section level1">
-<h1>Ćwiczenia</h1>
-<ol style="list-style-type: decimal">
-<li>Wygerenuj w R idealny rozkład zgodny z liniową regresją wielokrotną np. za pomocą kod:</li>
-</ol>
-<pre class="r"><code>n &lt;- 1000      
-x1 &lt;- runif(n, min = 0, max = 100)
-x2 &lt;- runif(n, min = 0, max = 100)
-y.good &lt;- 5 + 0.2 * x1+14*x2 + rnorm(n, sd = 3)</code></pre>
-<p>Przetestuj model i przeanalizuj wykresy.</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Przetestuj błędny model np.</li>
-</ol>
-<pre class="r"><code>y.bad&lt;-5+sin(x1)+x2*x2+rnorm(n,sd=4)</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Przeanalizuj wykresy dla ramek danych ze wcześniejszych ćwiczeń.
-</div></li>
-</ol>
 </div>
 
 

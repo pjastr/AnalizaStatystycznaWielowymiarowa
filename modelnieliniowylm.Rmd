@@ -33,7 +33,7 @@ header-includes: \usepackage[polish]{babel}
 
 [Wersja pdf](modelnieliniowylm.pdf) 
 
-Funkcja `lm` możemy być użyta również do "nieliniowych" model. Warto zwrócić uwagę, że symbol `+` był używany w niestandardowym kontekście.
+Funkcja `lm` możemy być użyta również do "nieliniowych" modeli. Warto zwrócić uwagę, że symbol `+` był używany w niestandardowym kontekście.
 
 | Symbol | Przykład | Znaczenie |
 |---|---|---|

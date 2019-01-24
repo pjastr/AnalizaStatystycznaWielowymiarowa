@@ -31,7 +31,7 @@ header-includes: \usepackage[polish]{babel}
 
 # Model liniowy - grafika
 
-[Wersja pdf](modelliniowygrafika.pdf) 
+[Wersja pdf](modelliniowygrafika.pdf) Uwaga: w pdf niektóre rysunki są źle rozmieszczone.
 
 Załadujmy w R jak poprzednio:
 

@@ -68,7 +68,7 @@ predf<-predict(model, new, se.fit = TRUE)
 predf
 ```
 
-`se.fit` ito odchylenie standardowe względem średniej`fit`.
+`se.fit` to odchylenie standardowe względem średniej`fit`.
 
 ## Przedziały ufności
 

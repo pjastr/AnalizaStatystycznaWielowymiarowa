@@ -429,7 +429,10 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="sprawyorganizacyjne.html">Sprawy organizacyjne</a>
+      <a href="analizawariancji.html">Analiza wariancji</a>
+    </li>
+    <li>
+      <a href="analizawariancjiaov.html">Analiza wariancji - aov</a>
     </li>
   </ul>
 </li>
@@ -591,22 +594,22 @@ np &lt;- runif(n, min=50, max=144)
 new2&lt;-data.frame( youtube = yt, facebook=fb, newspaper=np )
 pred2p&lt;-predict(model, new2, interval = &quot;prediction&quot;)
 head(pred2p)</code></pre>
-<pre><code>##        fit       lwr      upr
-## 1 11.87399  7.709948 16.03803
-## 2 18.70885 14.605629 22.81206
-## 3 15.43520 11.340188 19.53021
-## 4 18.24859 14.092294 22.40489
-## 5 13.59990  9.514340 17.68545
-## 6 19.44200 15.368800 23.51521</code></pre>
+<pre><code>##        fit      lwr      upr
+## 1 18.63382 14.59776 22.66988
+## 2 17.13392 13.11089 21.15695
+## 3 21.12457 17.04423 25.20491
+## 4 18.08018 14.02777 22.13258
+## 5 16.98419 12.92065 21.04773
+## 6 16.51260 12.49685 20.52836</code></pre>
 <pre class="r"><code>pred2c&lt;-predict(model, new2, interval = &quot;confidence&quot;)
 head(pred2c)</code></pre>
 <pre><code>##        fit      lwr      upr
-## 1 11.87399 10.67896 13.06902
-## 2 18.70885 17.74695 19.67074
-## 3 15.43520 14.50893 16.36148
-## 4 18.24859 17.08083 19.41635
-## 5 13.59990 12.71636 14.48343
-## 6 19.44200 18.61748 20.26653</code></pre>
+## 1 18.63382 18.01847 19.24916
+## 2 17.13392 16.61084 17.65700
+## 3 21.12457 20.26547 21.98367
+## 4 18.08018 17.36542 18.79493
+## 5 16.98419 16.20881 17.75958
+## 6 16.51260 16.04876 16.97644</code></pre>
 <pre class="r"><code>plot(pred2c[,1], ylab=&quot;&quot;, ylim=c(min(pred2p[,2]), max(pred2p[,3])), pch=20)
 lines(pred2c[,2], col=&quot;blue&quot;, lty=2)
 lines(pred2p[,2], col=&quot;red&quot;, lty=3)

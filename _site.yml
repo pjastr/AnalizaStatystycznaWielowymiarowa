@@ -27,8 +27,10 @@ navbar:
           href: modelnieliniowynls.html
     - text: "Dzień 2"
       menu:
-        - text: "Sprawy organizacyjne"
-          href: sprawyorganizacyjne.html
+        - text: "Analiza wariancji"
+          href: analizawariancji.html
+        - text: "Analiza wariancji - aov"
+          href: analizawariancjiaov.html
     - text: "Dzień 3"
       menu:
         - text: "Sprawy organizacyjne"

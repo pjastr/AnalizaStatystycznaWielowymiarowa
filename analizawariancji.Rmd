@@ -1,0 +1,52 @@
+---
+title: "Dzień 1 - Analiza wariancji"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 5
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+  pdf_document:
+    toc: yes
+    toc_depth: '5'
+header-includes: \usepackage[polish]{babel}
+---
+<style type="text/css">
+.title {
+  display: none;
+}
+
+.table {
+    width:70%;
+}
+
+#getting-started img {
+  margin-right: 10px;
+}
+
+</style>
+
+
+
+# Analiza wariancji
+
+[Wersja pdf](analizawariancji.pdf) 
+
+Przez analizę wariancji zazwyczaj uważa się testowanie istotności różnić między średnimi. 
+
+Modele analizy wariancji można podzielić na:
+
+* modele jednoczynnikowe - wpływ każdego czynnika jest rozpatrywany oddzielnie,
+* modele wieloczynnikowe - wpływ różnych czynników jest rozpatrywany łącznie.
+
+W R jest dostępnych wiele funkcji i narzędzi. Omówimy trzy najpopularniejsze:
+
+* `aov`
+* `anova`
+* `manova`
+
+
+
+</div>
+

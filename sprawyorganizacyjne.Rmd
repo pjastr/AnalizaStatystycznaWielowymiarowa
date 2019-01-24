@@ -88,6 +88,9 @@ Wykład:
 * https://faculty.chicagobooth.edu/richard.hahn/teaching/formulanotation.pdf, dostęp online 23.01.2019.
 * J. Adler, R in a Nutshell, Second Edition, O’Reilly Media, 2012.
 * https://datascienceplus.com/first-steps-with-non-linear-regression-in-r/, dostęp online 23.01.2019.
+* http://www.sthda.com/english/wiki/one-way-anova-test-in-r, dostęp online 24.01.2019.
+* https://rpubs.com/aaronsc32/post-hoc-analysis-tukey, dostęp online 24.01.2019.
+* http://www.sthda.com/english/wiki/two-way-anova-test-in-r, dostęp online 24.01.2019.
 
 
 

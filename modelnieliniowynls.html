@@ -419,6 +419,9 @@ div.tocify {
     <li>
       <a href="modelnieliniowynls.html">Model nieliniowy - nls</a>
     </li>
+    <li>
+      <a href="regresjacw.html">Regresja - ćw</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -444,7 +447,7 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="sprawyorganizacyjne.html">Sprawy organizacyjne</a>
+      <a href="miniprojekty.html">Miniprojekty</a>
     </li>
   </ul>
 </li>
@@ -493,15 +496,15 @@ summary(model)</code></pre>
 ## 
 ## Parameters:
 ##   Estimate Std. Error t value Pr(&gt;|t|)    
-## a  11.2623     0.4965  22.681  &lt; 2e-16 ***
-## b   8.2846     1.3844   5.984 2.47e-07 ***
+## a  13.5784     0.3693  36.763  &lt; 2e-16 ***
+## b   7.2768     0.8038   9.053 4.91e-12 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 1.015 on 49 degrees of freedom
+## Residual standard error: 0.8213 on 49 degrees of freedom
 ## 
-## Number of iterations to convergence: 10 
-## Achieved convergence tolerance: 5.356e-06</code></pre>
+## Number of iterations to convergence: 7 
+## Achieved convergence tolerance: 4.274e-06</code></pre>
 <pre class="r"><code>plot(x,y)
 lines(x,predict(model),lty=2,col=&quot;red&quot;,lwd=3)</code></pre>
 <p><img src="modelnieliniowynls_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
@@ -519,15 +522,15 @@ summary(model2)</code></pre>
 ## 
 ## Parameters:
 ##    Estimate Std. Error t value Pr(&gt;|t|)    
-## b1   4.5093     0.4139  10.894  &lt; 2e-16 ***
-## b2  40.7763     5.4119   7.535  1.1e-13 ***
+## b1   5.0930     0.4323  11.782  &lt; 2e-16 ***
+## b2  43.6170     5.4290   8.034 2.65e-15 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 3.016 on 998 degrees of freedom
+## Residual standard error: 2.972 on 998 degrees of freedom
 ## 
 ## Number of iterations to convergence: 7 
-## Achieved convergence tolerance: 1.288e-06</code></pre>
+## Achieved convergence tolerance: 1.489e-06</code></pre>
 </div>
 </div>
 </div>

@@ -419,6 +419,9 @@ div.tocify {
     <li>
       <a href="modelnieliniowynls.html">Model nieliniowy - nls</a>
     </li>
+    <li>
+      <a href="regresjacw.html">Regresja - ćw</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -444,7 +447,7 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="sprawyorganizacyjne.html">Sprawy organizacyjne</a>
+      <a href="miniprojekty.html">Miniprojekty</a>
     </li>
   </ul>
 </li>
@@ -595,21 +598,21 @@ new2&lt;-data.frame( youtube = yt, facebook=fb, newspaper=np )
 pred2p&lt;-predict(model, new2, interval = &quot;prediction&quot;)
 head(pred2p)</code></pre>
 <pre><code>##        fit       lwr      upr
-## 1 15.56791 11.541701 19.59412
-## 2 15.86793 11.758211 19.97764
-## 3 13.16606  9.055998 17.27612
-## 4 18.90203 14.830591 22.97346
-## 5 21.35355 17.308664 25.39844
-## 6 15.75959 11.638555 19.88062</code></pre>
+## 1 20.84560 16.791669 24.89953
+## 2 19.33347 15.185313 23.48163
+## 3 18.57936 14.487206 22.67151
+## 4 18.81944 14.733674 22.90520
+## 5 12.21435  8.017472 16.41123
+## 6 12.28228  8.192120 16.37243</code></pre>
 <pre class="r"><code>pred2c&lt;-predict(model, new2, interval = &quot;confidence&quot;)
 head(pred2c)</code></pre>
 <pre><code>##        fit      lwr      upr
-## 1 15.56791 15.02090 16.11493
-## 2 15.86793 14.87867 16.85718
-## 3 13.16606 12.17537 14.15675
-## 4 18.90203 18.08628 19.71778
-## 5 21.35355 20.68276 22.02435
-## 6 15.75959 14.72432 16.79486</code></pre>
+## 1 20.84560 20.12227 21.56893
+## 2 19.33347 18.19502 20.47192
+## 3 18.57936 17.66581 19.49291
+## 4 18.81944 17.93496 19.70391
+## 5 12.21435 10.90949 13.51921
+## 6 12.28228 11.37771 13.18684</code></pre>
 <pre class="r"><code>plot(pred2c[,1], ylab=&quot;&quot;, ylim=c(min(pred2p[,2]), max(pred2p[,3])), pch=20)
 lines(pred2c[,2], col=&quot;blue&quot;, lty=2)
 lines(pred2p[,2], col=&quot;red&quot;, lty=3)

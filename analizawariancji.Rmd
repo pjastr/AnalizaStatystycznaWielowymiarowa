@@ -1,5 +1,5 @@
 ---
-title: "Dzień 1 - Analiza wariancji"
+title: "Dzień 2 - Analiza wariancji"
 output:
   html_document:
     toc: yes

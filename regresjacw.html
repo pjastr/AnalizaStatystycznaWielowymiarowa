@@ -11,7 +11,7 @@
 
 
 
-<title>Dzień 1 - Model liniowy - grafika</title>
+<title>Dzień 1 - Regresja - ćw.</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -463,7 +463,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Dzień 1 - Model liniowy - grafika</h1>
+<h1 class="title toc-ignore">Dzień 1 - Regresja - ćw.</h1>
 
 </div>
 
@@ -482,69 +482,67 @@ div.tocify {
 }
 
 </style>
-<div id="model-liniowy---grafika" class="section level1">
-<h1>Model liniowy - grafika</h1>
-<p><a href="modelliniowygrafika.pdf">Wersja pdf</a> Uwaga: w pdf niektóre rysunki są źle rozmieszczone.</p>
-<p>Załadujmy w R jak poprzednio:</p>
-<pre class="r"><code>library(tidyverse)
-devtools::install_github(&quot;kassambara/datarium&quot;)
-data(&quot;marketing&quot;, package = &quot;datarium&quot;)
-model &lt;- lm(sales ~ youtube + facebook + newspaper, data = marketing)</code></pre>
-<pre class="r"><code>plot(model)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-1.png" width="672" /><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-2.png" width="672" /><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-3.png" width="672" /><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
-<div id="wykres-1" class="section level2">
-<h2>Wykres 1</h2>
-<p>Przeanalizujmy pierwszy wykres:</p>
-<pre class="r"><code>plot(model, which = 1)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>Ręcznie możemy to uzyskać:</p>
-<pre class="r"><code>plot(model$fitted.values, model$residuals,  ylab = &quot;Residuals&quot;, xlab = &quot;Fitted values&quot;, )
-lines(lowess(model$fitted.values, model$residuals), col=&#39;red&#39;, lwd=2)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>Wyjaśnienie na rysunku:</p>
-<div class="figure">
-<img src="g1.png" />
-
-</div>
-<p><sub><sup>źródło zdjęcia: <a href="https://stats.stackexchange.com/questions/76226/interpreting-the-residuals-vs-fitted-values-plot-for-verifying-the-assumptions" class="uri">https://stats.stackexchange.com/questions/76226/interpreting-the-residuals-vs-fitted-values-plot-for-verifying-the-assumptions</a></sub></p>
-</div>
-<div id="wykres-2" class="section level2">
-<h2>Wykres 2</h2>
-<pre class="r"><code>plot(model, which = 2)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>Wykres Q-Q (kwantylowo-kwantylowy) informuje, na ile dopasowanie odbiega od rozkładu normalnego.</p>
-</div>
-<div id="wykres-3" class="section level2">
-<h2>Wykres 3</h2>
-<pre class="r"><code>plot(model, which = 3)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>Ten wykres pokazuje, czy reszty są równomiernie rozłożone wzdłuż zakresów dopasowanych wartości. W ten sposób można sprawdzić założenie równej wariancji (homoscedastyczność). To dobrze, jeśli jest linia pozioma z równomiernie umieszczonymi punktami.</p>
-</div>
-<div id="wykres-5" class="section level2">
-<h2>Wykres 5</h2>
-<pre class="r"><code>plot(model, which = 5)</code></pre>
-<p><img src="modelliniowygrafika_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>Wykres pokazuje jednorodność wariancji. Cel: linia ciągła jest pozioma, punkty równomiernie rozłożone, brak linii przerywanej. Dokładniejsze wytłumaczenie: <a href="http://prac.im.pwr.wroc.pl/~sobczyk/dydaktyka/diagnostyka_regresji.pdf">link</a>.</p>
-</div>
-</div>
-<div id="cwiczenia" class="section level1">
-<h1>Ćwiczenia</h1>
+<div id="model-liniowy---cw." class="section level1">
+<h1>Model liniowy - ćw.</h1>
+<p><a href="regresjacw.pdf">Wersja pdf</a></p>
 <ol style="list-style-type: decimal">
-<li>Wygerenuj w R idealny rozkład zgodny z liniową regresją wielokrotną np. za pomocą kod:</li>
+<li>Załaduj do R poniższe ramki danych i potestuj modele na nich:</li>
 </ol>
-<pre class="r"><code>n &lt;- 1000      
-x1 &lt;- runif(n, min = 0, max = 100)
-x2 &lt;- runif(n, min = 0, max = 100)
-y.good &lt;- 5 + 0.2 * x1+14*x2 + rnorm(n, sd = 3)</code></pre>
-<p>Przetestuj model i przeanalizuj wykresy.</p>
+<ul>
+<li>sprzedaż siedzisk samochodowych:</li>
+</ul>
+<pre class="r"><code>library(ISLR)
+data(&quot;Carseats&quot;)
+head(Carseats)</code></pre>
+<pre><code>##   Sales CompPrice Income Advertising Population Price ShelveLoc Age
+## 1  9.50       138     73          11        276   120       Bad  42
+## 2 11.22       111     48          16        260    83      Good  65
+## 3 10.06       113     35          10        269    80    Medium  59
+## 4  7.40       117    100           4        466    97    Medium  55
+## 5  4.15       141     64           3        340   128       Bad  38
+## 6 10.81       124    113          13        501    72       Bad  78
+##   Education Urban  US
+## 1        17   Yes Yes
+## 2        10   Yes Yes
+## 3        12   Yes Yes
+## 4        14   Yes Yes
+## 5        13   Yes  No
+## 6        16    No Yes</code></pre>
+<p>Opis danych - <a href="https://www.rdocumentation.org/packages/ISLR/versions/1.2/topics/Carseats">link</a>. <em>Warto wybrać zmienne ciągłe.</em></p>
+<ul>
+<li><p>ramka <code>mtcars</code>.</p></li>
+<li><p>ramka <code>marketing</code>.</p></li>
+</ul>
 <ol start="2" style="list-style-type: decimal">
-<li>Przetestuj błędny model np.</li>
+<li>Ze strony (<a href="http://www3.dsi.uminho.pt/pcortez/wine/">link</a>) pobierz plik zip z danymi. Następnie rozpakuj go. Pliki winequality-red.csv i winequality-white.csv skopiuj do katalogu roboczego R. Następnie załaduj je do R i przeprowadź analizę regresji w różnych modelach.</li>
 </ol>
-<pre class="r"><code>y.bad&lt;-5+sin(x1)+x2*x2+rnorm(n,sd=4)</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Przeanalizuj wykresy dla ramek danych ze wcześniejszych ćwiczeń.
-</div></li>
-</ol>
+<p>Opis zmiennych: 1 - fixed acidity (stała kwasowość), 2 - volatile acidity (lotna kwasowość), 3 - citric acid (kwas cytrynowy), 4 - residual sugar (cukier resztkowy), 5 - chlorides (chlorki), 6 - free sulfur dioxide (wolny dwutlenek siarki), 7 - total sulfur dioxide (całkowity dwutlenek siarki), 8 - density (gęstość), 9 - pH, 10 - sulphates (siarczany), 11 - alcohol (zwartość alkoholu), 12 - quality (jakość).</p>
+<p>Zmienną objaśnianą jest 12 - jakość.</p>
+<p>Wskazówka do ładowania przykładowego pliku:</p>
+<pre class="r"><code>dane&lt;-read.csv2(&quot;winequality-red.csv&quot;)
+head(dane)</code></pre>
+<pre><code>##   fixed.acidity volatile.acidity citric.acid residual.sugar chlorides
+## 1           7.4              0.7           0            1.9     0.076
+## 2           7.8             0.88           0            2.6     0.098
+## 3           7.8             0.76        0.04            2.3     0.092
+## 4          11.2             0.28        0.56            1.9     0.075
+## 5           7.4              0.7           0            1.9     0.076
+## 6           7.4             0.66           0            1.8     0.075
+##   free.sulfur.dioxide total.sulfur.dioxide density   pH sulphates alcohol
+## 1                  11                   34  0.9978 3.51      0.56     9.4
+## 2                  25                   67  0.9968  3.2      0.68     9.8
+## 3                  15                   54   0.997 3.26      0.65     9.8
+## 4                  17                   60   0.998 3.16      0.58     9.8
+## 5                  11                   34  0.9978 3.51      0.56     9.4
+## 6                  13                   40  0.9978 3.51      0.56     9.4
+##   quality
+## 1       5
+## 2       5
+## 3       5
+## 4       6
+## 5       5
+## 6       5</code></pre>
+</div>
 </div>
 
 

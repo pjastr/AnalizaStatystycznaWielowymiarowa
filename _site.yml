@@ -25,6 +25,8 @@ navbar:
           href: modelnieliniowylm.html
         - text: "Model nieliniowy - nls"
           href: modelnieliniowynls.html
+        - text: "Regresja - ćw"
+          href: regresjacw.html
     - text: "Dzień 2"
       menu:
         - text: "Analiza wariancji"
@@ -33,8 +35,8 @@ navbar:
           href: analizawariancjiaov.html
     - text: "Dzień 3"
       menu:
-        - text: "Sprawy organizacyjne"
-          href: sprawyorganizacyjne.html
+        - text: "Miniprojekty"
+          href: miniprojekty.html
 
 
 

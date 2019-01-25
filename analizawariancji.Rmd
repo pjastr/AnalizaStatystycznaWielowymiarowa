@@ -33,7 +33,7 @@ header-includes: \usepackage[polish]{babel}
 
 [Wersja pdf](analizawariancji.pdf) 
 
-Przez analizę wariancji zazwyczaj uważa się testowanie istotności różnić między średnimi. 
+Przez analizę wariancji zazwyczaj uważa się testowanie istotności różnić między średnimi. Model zwykle stosowany gdy co najmniej jedna ze zmiennych objaśniających jest jakościowa.
 
 Modele analizy wariancji można podzielić na:
 

@@ -11,7 +11,7 @@
 
 
 
-<title>Dzień 1 - Sprawy organizacyjne</title>
+<title>Dzień 2 - Tablica analizy wariancji - anova</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -475,7 +475,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Dzień 1 - Sprawy organizacyjne</h1>
+<h1 class="title toc-ignore">Dzień 2 - Tablica analizy wariancji - anova</h1>
 
 </div>
 
@@ -494,72 +494,202 @@ div.tocify {
 }
 
 </style>
-<div id="sprawy-organizacyjne" class="section level1">
-<h1>Sprawy organizacyjne</h1>
-<p><a href="sprawyorganizacyjne.pdf">Wersja pdf</a></p>
-<ul>
-<li>Sylabus dostępny na stronie studiów podyplomowych WMII - <a href="http://wmii.uwm.edu.pl/psi/sites/default/files/styles/10_analiza_statystyczna_wielowymiarowa.pdf">link</a></li>
-<li>Liczba godzin: 6 godz. (wykład) + 8 godz. (ćwiczenia).</li>
-<li>Liczba punktów ECTS: 2.</li>
-<li>Forma zaliczenia: zaliczenie na ocenę.</li>
-<li>Konsultacje: informacje są dostępne są na stronie www w domenie wmii.</li>
-</ul>
-<div id="tresci-zajec" class="section level2">
-<h2>Treści zajęć</h2>
-<p>Wykłady:</p>
-<ul>
-<li>Regresja wielowymiarowa</li>
-<li>Testy istotności</li>
-<li>Regresja wielowymiarowa w prognozowaniu</li>
-<li>Modele liniowe i nieliniowe</li>
-<li>Wektory losowe</li>
-<li>Rozkłady zmiennych losowych wielowymiarowych</li>
-<li>Analiza wariancji wielowymiarowa</li>
-<li>Analiza dyskryminacyjna</li>
-</ul>
-<p>Ćwiczenia:</p>
-<ul>
-<li>Wykorzystanie różnych technik statystyki wielowymiarowej.</li>
-<li>Interpretacja uzyskanych wyników oraz sformułowanie raportu z przeprowadzonego badania</li>
-</ul>
+<div id="tablica-analizy-wariancji---anova" class="section level1">
+<h1>Tablica analizy wariancji - anova</h1>
+<p><a href="tablicaanalizywariancjianova.pdf">Wersja pdf</a></p>
+<div id="zmienne-ciage" class="section level2">
+<h2>Zmienne ciągłe</h2>
+<p>Przeanalizuj kod w R:</p>
+<pre class="r"><code>library(tidyverse)
+devtools::install_github(&quot;kassambara/datarium&quot;)
+data(&quot;marketing&quot;, package = &quot;datarium&quot;)</code></pre>
+<pre class="r"><code>model &lt;- lm(sales ~ youtube + facebook + newspaper, data = marketing)
+summary(model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = sales ~ youtube + facebook + newspaper, data = marketing)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -10.5932  -1.0690   0.2902   1.4272   3.3951 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  3.526667   0.374290   9.422   &lt;2e-16 ***
+## youtube      0.045765   0.001395  32.809   &lt;2e-16 ***
+## facebook     0.188530   0.008611  21.893   &lt;2e-16 ***
+## newspaper   -0.001037   0.005871  -0.177     0.86    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.023 on 196 degrees of freedom
+## Multiple R-squared:  0.8972, Adjusted R-squared:  0.8956 
+## F-statistic: 570.3 on 3 and 196 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code>anova(model)</code></pre>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: sales
+##            Df Sum Sq Mean Sq   F value Pr(&gt;F)    
+## youtube     1 4773.1  4773.1 1166.7308 &lt;2e-16 ***
+## facebook    1 2225.7  2225.7  544.0501 &lt;2e-16 ***
+## newspaper   1    0.1     0.1    0.0312 0.8599    
+## Residuals 196  801.8     4.1                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Jak widać, ostatnia kolumna jest taka sama - nie otrzymujemy w przypadku zmiennych ciągłych nowych informacji.</p>
 </div>
-<div id="forma-i-warunki-weryfikacji-efektow" class="section level2">
-<h2>Forma i warunki weryfikacji efektów</h2>
-<p>Wykład:</p>
-<ul>
-<li>Udział w dyskusji;</li>
-<li>Obecność na zajęciach.</li>
-</ul>
-<p>Ćwiczenia:</p>
-<ul>
-<li>mini-projekt,</li>
-<li>aktywność na zajęciach.</li>
-</ul>
+<div id="zmienne-jakosciowe-objasniajace" class="section level2">
+<h2>Zmienne jakościowe objaśniające</h2>
+<p>Rozważmy przykład z danymi jakościowymi:</p>
+<pre class="r"><code>library(car)</code></pre>
+<pre class="r"><code>data(&quot;Salaries&quot;)
+head(Salaries)</code></pre>
+<pre><code>##        rank discipline yrs.since.phd yrs.service  sex salary
+## 1      Prof          B            19          18 Male 139750
+## 2      Prof          B            20          16 Male 173200
+## 3  AsstProf          B             4           3 Male  79750
+## 4      Prof          B            45          39 Male 115000
+## 5      Prof          B            40          41 Male 141500
+## 6 AssocProf          B             6           6 Male  97000</code></pre>
+<pre class="r"><code>model &lt;- lm(salary ~ sex, data = Salaries)
+summary(model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = salary ~ sex, data = Salaries)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -57290 -23502  -6828  19710 116455 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   101002       4809  21.001  &lt; 2e-16 ***
+## sexMale        14088       5065   2.782  0.00567 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 30030 on 395 degrees of freedom
+## Multiple R-squared:  0.01921,    Adjusted R-squared:  0.01673 
+## F-statistic: 7.738 on 1 and 395 DF,  p-value: 0.005667</code></pre>
+<pre class="r"><code>anova(model)</code></pre>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: salary
+##            Df     Sum Sq    Mean Sq F value   Pr(&gt;F)   
+## sex         1 6.9800e+09 6980014930  7.7377 0.005667 **
+## Residuals 395 3.5632e+11  902077538                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Jak to obliczamy?</p>
+<pre class="r"><code>y&lt;-Salaries$salary
+ssm&lt;-sum((model$fitted.values - mean(y))^2)
+ssm</code></pre>
+<pre><code>## [1] 6980014930</code></pre>
+<pre class="r"><code>ssr&lt;-sum((y-model$fitted.values)^2)
+ssr</code></pre>
+<pre><code>## [1] 356320627631</code></pre>
+<pre class="r"><code>ssm/1</code></pre>
+<pre><code>## [1] 6980014930</code></pre>
+<pre class="r"><code>ssr/395</code></pre>
+<pre><code>## [1] 902077538</code></pre>
+<pre class="r"><code>f&lt;-(ssm/1)/(ssr/395)
+f</code></pre>
+<pre><code>## [1] 7.737711</code></pre>
+<pre class="r"><code>p&lt;-1-pf(f, 1,395)
+p</code></pre>
+<pre><code>## [1] 0.005667107</code></pre>
+<p>Czemu nie wyszło to tak jak wcześniej? Wynika to z faktu, jak R intrepretuje zmienne jakościowe. Ostatni level zmiennej <code>sex</code> to <code>Male</code>, więc ma przypisaną wartość 1, a potem (od końca) <code>Female</code> jako 0. Model liniowy jest zapisano jako <span class="math inline">\(y=\beta_0+\beta_1 x +\varepsilon\)</span>. Wtedy <span class="math inline">\(\beta_0+\beta_1\)</span> dotyczy <code>Male</code>, <span class="math inline">\(\beta_0\)</span> dotyczy <code>Female</code>. Samo <span class="math inline">\(\beta_1\)</span> dotyczy różnicy między <code>Male</code> a <code>Female</code>.</p>
+<p>Jeśli zmienna ma więcej niż 2 wartości cechy, to jest zamieniana na więcej zmiennych o dwóch wartościach (levelach).</p>
+<pre class="r"><code>levels(Salaries$rank)</code></pre>
+<pre><code>## [1] &quot;AsstProf&quot;  &quot;AssocProf&quot; &quot;Prof&quot;</code></pre>
+<pre class="r"><code>res &lt;- model.matrix(~rank, data = Salaries)
+head(res)</code></pre>
+<pre><code>##   (Intercept) rankAssocProf rankProf
+## 1           1             0        1
+## 2           1             0        1
+## 3           1             0        0
+## 4           1             0        1
+## 5           1             0        1
+## 6           1             1        0</code></pre>
+<pre class="r"><code>head(Salaries$rank)</code></pre>
+<pre><code>## [1] Prof      Prof      AsstProf  Prof      Prof      AssocProf
+## Levels: AsstProf AssocProf Prof</code></pre>
+<pre class="r"><code>model2&lt;-lm(salary ~ yrs.service + rank + discipline + sex, data = Salaries)
+summary(model2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = salary ~ yrs.service + rank + discipline + sex, 
+##     data = Salaries)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -64202 -14255  -1533  10571  99163 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   68351.67    4482.20  15.250  &lt; 2e-16 ***
+## yrs.service     -88.78     111.64  -0.795 0.426958    
+## rankAssocProf 14560.40    4098.32   3.553 0.000428 ***
+## rankProf      49159.64    3834.49  12.820  &lt; 2e-16 ***
+## disciplineB   13473.38    2315.50   5.819 1.24e-08 ***
+## sexMale        4771.25    3878.00   1.230 0.219311    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 22650 on 391 degrees of freedom
+## Multiple R-squared:  0.4478, Adjusted R-squared:  0.4407 
+## F-statistic: 63.41 on 5 and 391 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code>anova(model2)</code></pre>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: salary
+##              Df     Sum Sq    Mean Sq  F value    Pr(&gt;F)    
+## yrs.service   1 4.0709e+10 4.0709e+10  79.3405 &lt; 2.2e-16 ***
+## rank          2 1.0358e+11 5.1789e+10 100.9335 &lt; 2.2e-16 ***
+## discipline    1 1.7617e+10 1.7617e+10  34.3350 9.861e-09 ***
+## sex           1 7.7669e+08 7.7669e+08   1.5137    0.2193    
+## Residuals   391 2.0062e+11 5.1310e+08                       
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<div id="literatura" class="section level2">
-<h2>Literatura</h2>
-<ul>
-<li>P. Biecek, Przewodnik po pakiecie R, Oficyna Wydawnicza GiS, 2017.</li>
-<li>J. Syska, Współczesne metody analizy regresji wspomagane komputerowo, dostęp online 19.01.2019, <a href="https://el.us.edu.pl/ekonofizyka/images/b/b6/MetodyDoboruModeli.pdf" class="uri">https://el.us.edu.pl/ekonofizyka/images/b/b6/MetodyDoboruModeli.pdf</a> .</li>
-<li><a href="https://en.wikipedia.org/wiki/Ordinary_least_squares" class="uri">https://en.wikipedia.org/wiki/Ordinary_least_squares</a>, dostęp online 19.01.2019.</li>
-<li><a href="http://facweb.cs.depaul.edu/sjost/csc423/documents/f-test-reg.htm" class="uri">http://facweb.cs.depaul.edu/sjost/csc423/documents/f-test-reg.htm</a>, dostęp online 19.01.2019.</li>
-<li><a href="http://web.thu.edu.tw/wichuang/www/Financial%20Econometrics/Lectures/CHAPTER%208.pdf">http://web.thu.edu.tw/wichuang/www/Financial%20Econometrics/Lectures/CHAPTER%208.pdf</a>, dostęp online 19.01.2019.</li>
-<li>S. J. Sheather, A Modern Approach to Regression with R, Springer 2009.</li>
-<li><a href="https://stats.stackexchange.com/questions/5135/interpretation-of-rs-lm-output" class="uri">https://stats.stackexchange.com/questions/5135/interpretation-of-rs-lm-output</a>, dostęp online 19.01.2019.</li>
-<li><a href="http://www.sthda.com/english/articles/40-regression-analysis/168-multiple-linear-regression-in-r/" class="uri">http://www.sthda.com/english/articles/40-regression-analysis/168-multiple-linear-regression-in-r/</a>, dostęp online 19.01.2019.</li>
-<li><a href="https://data.library.virginia.edu/diagnostic-plots/" class="uri">https://data.library.virginia.edu/diagnostic-plots/</a>, dostęp online 23.01.2019.</li>
-<li><a href="https://www.andrew.cmu.edu/user/achoulde/94842/homework/regression_diagnostics.html" class="uri">https://www.andrew.cmu.edu/user/achoulde/94842/homework/regression_diagnostics.html</a>, dostęp online 23.01.2019.</li>
-<li><a href="https://stats.stackexchange.com/questions/58141/interpreting-plot-lm" class="uri">https://stats.stackexchange.com/questions/58141/interpreting-plot-lm</a>, dostęp online 23.01.2019.</li>
-<li><a href="https://faculty.chicagobooth.edu/richard.hahn/teaching/formulanotation.pdf" class="uri">https://faculty.chicagobooth.edu/richard.hahn/teaching/formulanotation.pdf</a>, dostęp online 23.01.2019.</li>
-<li>J. Adler, R in a Nutshell, Second Edition, O’Reilly Media, 2012.</li>
-<li><a href="https://datascienceplus.com/first-steps-with-non-linear-regression-in-r/" class="uri">https://datascienceplus.com/first-steps-with-non-linear-regression-in-r/</a>, dostęp online 23.01.2019.</li>
-<li><a href="http://www.sthda.com/english/wiki/one-way-anova-test-in-r" class="uri">http://www.sthda.com/english/wiki/one-way-anova-test-in-r</a>, dostęp online 24.01.2019.</li>
-<li><a href="https://rpubs.com/aaronsc32/post-hoc-analysis-tukey" class="uri">https://rpubs.com/aaronsc32/post-hoc-analysis-tukey</a>, dostęp online 24.01.2019.</li>
-<li><a href="http://www.sthda.com/english/wiki/two-way-anova-test-in-r" class="uri">http://www.sthda.com/english/wiki/two-way-anova-test-in-r</a>, dostęp online 24.01.2019.</li>
-<li><a href="https://www.r-bloggers.com/two-way-analysis-of-variance-anova/" class="uri">https://www.r-bloggers.com/two-way-analysis-of-variance-anova/</a>, dostęp online 25.09.2019.</li>
-<li><a href="https://stats.stackexchange.com/questions/115304/interpreting-output-from-anova-when-using-lm-as-input" class="uri">https://stats.stackexchange.com/questions/115304/interpreting-output-from-anova-when-using-lm-as-input</a>, dostęp online 25.09.2019.</li>
-<li><a href="http://www.sthda.com/english/articles/40-regression-analysis/163-regression-with-categorical-variables-dummy-coding-essentials-in-r/#categorical-variables-with-more-than-two-levels" class="uri">http://www.sthda.com/english/articles/40-regression-analysis/163-regression-with-categorical-variables-dummy-coding-essentials-in-r/#categorical-variables-with-more-than-two-levels</a>, dostęp online 25.09.2019.</li>
-</ul>
+<div id="porownywanie-modeli" class="section level2">
+<h2>Porównywanie modeli</h2>
+<pre class="r"><code>fit &lt;- lm(sr ~ ., data = LifeCycleSavings)
+anova(fit)</code></pre>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: sr
+##           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## pop15      1 204.12 204.118 14.1157 0.0004922 ***
+## pop75      1  53.34  53.343  3.6889 0.0611255 .  
+## dpi        1  12.40  12.401  0.8576 0.3593551    
+## ddpi       1  63.05  63.054  4.3605 0.0424711 *  
+## Residuals 45 650.71  14.460                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>## same effect via separate models
+fit0 &lt;- lm(sr ~ 1, data = LifeCycleSavings)
+fit1 &lt;- update(fit0, . ~ . + pop15)
+fit2 &lt;- update(fit1, . ~ . + pop75)
+fit3 &lt;- update(fit2, . ~ . + dpi)
+fit4 &lt;- update(fit3, . ~ . + ddpi)
+anova(fit0, fit1, fit2, fit3, fit4, test = &quot;F&quot;)</code></pre>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: sr ~ 1
+## Model 2: sr ~ pop15
+## Model 3: sr ~ pop15 + pop75
+## Model 4: sr ~ pop15 + pop75 + dpi
+## Model 5: sr ~ pop15 + pop75 + dpi + ddpi
+##   Res.Df    RSS Df Sum of Sq       F    Pr(&gt;F)    
+## 1     49 983.63                                   
+## 2     48 779.51  1   204.118 14.1157 0.0004922 ***
+## 3     47 726.17  1    53.343  3.6889 0.0611255 .  
+## 4     46 713.77  1    12.401  0.8576 0.3593551    
+## 5     45 650.71  1    63.054  4.3605 0.0424711 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Jeśli otrzymane prawdopodobieństwo w ostatniej kolumnie jest mniejsze niż <span class="math inline">\(0,05\)</span> to stwierdzamy, że bardziej zawiły model jest wystarczająco lepszy niż prostszy model. W przeciwnym wypadku wybieramy prostszy model.</p>
 </div>
 </div>
 </div>

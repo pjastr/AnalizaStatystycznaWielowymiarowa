@@ -29,7 +29,7 @@ header-includes: \usepackage[polish]{babel}
 
 
 
-# Model liniowy - ćw.
+# Regresja - ćw.
 
 [Wersja pdf](regresjacw.pdf) 
 

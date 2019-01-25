@@ -305,7 +305,7 @@ p
 fstat<-summary(model)$fstatistic 
 1-pf(fstat[1], fstat[2],fstat[3])
 ```
-W naszym wypadku jest to "bliskie" zeru", więc możemy przyjąć, że się zgadza.
+W naszym wypadku jest to "bliskie" zeru, więc możemy przyjąć, że się zgadza.
 
 Jeśli $p\leqslant \alpha$ odrzucamy $H_0$ przyjując $H_1$. W przeciwnym wypadku nie ma podstaw by odrzucić $H_0$.
 

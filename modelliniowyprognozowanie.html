@@ -437,6 +437,15 @@ div.tocify {
     <li>
       <a href="analizawariancjiaov.html">Analiza wariancji - aov</a>
     </li>
+    <li>
+      <a href="tablicaanalizywariancjianova.html">Tablica analizy wariancji - anova</a>
+    </li>
+    <li>
+      <a href="wektorylosowe.html">Wektory losowe</a>
+    </li>
+    <li>
+      <a href="analizawariancjiamanova.html">Analiza wariancji - manova</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -446,6 +455,9 @@ div.tocify {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="analizadyskryminacyjna.html">Analiza dyskryminacyjna</a>
+    </li>
     <li>
       <a href="miniprojekty.html">Miniprojekty</a>
     </li>
@@ -597,22 +609,22 @@ np &lt;- runif(n, min=50, max=144)
 new2&lt;-data.frame( youtube = yt, facebook=fb, newspaper=np )
 pred2p&lt;-predict(model, new2, interval = &quot;prediction&quot;)
 head(pred2p)</code></pre>
-<pre><code>##        fit       lwr      upr
-## 1 20.84560 16.791669 24.89953
-## 2 19.33347 15.185313 23.48163
-## 3 18.57936 14.487206 22.67151
-## 4 18.81944 14.733674 22.90520
-## 5 12.21435  8.017472 16.41123
-## 6 12.28228  8.192120 16.37243</code></pre>
+<pre><code>##        fit      lwr      upr
+## 1 17.18214 13.09217 21.27210
+## 2 16.32720 12.24317 20.41123
+## 3 19.89572 15.77210 24.01934
+## 4 17.41696 13.30338 21.53054
+## 5 22.63643 18.57009 26.70277
+## 6 14.36216 10.17800 18.54632</code></pre>
 <pre class="r"><code>pred2c&lt;-predict(model, new2, interval = &quot;confidence&quot;)
 head(pred2c)</code></pre>
 <pre><code>##        fit      lwr      upr
-## 1 20.84560 20.12227 21.56893
-## 2 19.33347 18.19502 20.47192
-## 3 18.57936 17.66581 19.49291
-## 4 18.81944 17.93496 19.70391
-## 5 12.21435 10.90949 13.51921
-## 6 12.28228 11.37771 13.18684</code></pre>
+## 1 17.18214 16.27843 18.08584
+## 2 16.32720 15.45077 17.20363
+## 3 19.89572 18.85020 20.94124
+## 4 17.41696 16.41177 18.42215
+## 5 22.63643 21.84650 23.42635
+## 6 14.36216 13.09882 15.62551</code></pre>
 <pre class="r"><code>plot(pred2c[,1], ylab=&quot;&quot;, ylim=c(min(pred2p[,2]), max(pred2p[,3])), pch=20)
 lines(pred2c[,2], col=&quot;blue&quot;, lty=2)
 lines(pred2p[,2], col=&quot;red&quot;, lty=3)

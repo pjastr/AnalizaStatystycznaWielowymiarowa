@@ -552,9 +552,30 @@ Y ~ (X + Z + W)^3</code></pre>
 <p>reprezentują tą samą zmienną</p>
 <p><span class="math display">\[Y_i=\beta_0 + \beta_1 X_i+\beta_2 Z_i +\beta_3 W_i+\beta_4X_iZ_i +\beta_5 X_iW_i+\beta_6 Z_iW_i+\beta_7X_iZ_iW_i+\varepsilon\]</span></p>
 <p>Jeśli mamy regresję “wielomianową” <span class="math display">\[ y = \beta_0 + \beta_1X+\beta_2X^2+\beta_3X^3 + \varepsilon ,\]</span> możemy np. dla stopnia trzeciego wyrażyć ją następująco na dwa sposoby:</p>
-<pre><code>y ~ poly(x,3)
-y ~ x + I(X^2) + I(X^3)</code></pre>
-Uwaga: w przypadku modelu z funkcją eksponencjalną w razie problemów można z własności: <span class="math display">\[y = e^{a+bx} \quad  \Longleftrightarrow\ \quad log(y) = a + bx.\]</span>
+<pre><code>y ~ poly(x,3, raw=TRUE)
+y ~ x + I(x^2) + I(x^3)</code></pre>
+<p>Uwaga: w przypadku modelu z funkcją eksponencjalną w razie problemów można z własności: <span class="math display">\[y = e^{a+bx} \quad  \Longleftrightarrow\ \quad log(y) = a + bx.\]</span></p>
+<p><strong>Ćwiczenie:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Załaduj ramkę <code>marketing</code> jak wcześniej. Niech</li>
+</ol>
+<pre><code>y&lt;-marketing$sales
+x&lt;-marketing$youtube</code></pre>
+<p>Sprawdź podsumowania modeli:</p>
+<pre><code>y ~ poly(x,3, raw=TRUE)
+y ~ x + I(x^2) + I(x^3)
+y ~ poly(x,3)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Załaduj ramkę <code>marketing</code> jak wcześniej. Niech</li>
+</ol>
+<pre><code>y&lt;-marketing$sales
+x&lt;-marketing$youtube
+x2&lt;-marketing$facebook
+z&lt;-x*x2</code></pre>
+<p>Sprawdź podsumowania modeli:</p>
+<pre><code>y ~ x:x2
+y ~ x*x2
+y ~ z</code></pre>
 </div>
 </div>
 

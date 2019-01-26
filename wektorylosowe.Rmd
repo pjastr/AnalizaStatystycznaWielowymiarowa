@@ -1,5 +1,5 @@
 ---
-title: "Dzień 2 - Wektory losowe"
+title: "Dzień 3 - Wektory losowe"
 output:
   html_document:
     toc: yes

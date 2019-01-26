@@ -1,5 +1,5 @@
 ---
-title: "Dzień 3 - Analiza wariancji - manova"
+title: "Dzień 2 - Curve fitting"
 output:
   html_document:
     toc: yes
@@ -29,9 +29,9 @@ header-includes: \usepackage[polish]{babel}
 
 
 
-# Analiza wariancji - manova
+# Curve fitting
 
-[Wersja pdf](analizawariancjiamanova.pdf) 
+[Wersja pdf](curvefitting.pdf) 
 
 Strona w budowie.
 </div>

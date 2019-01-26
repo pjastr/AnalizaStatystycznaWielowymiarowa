@@ -441,10 +441,7 @@ div.tocify {
       <a href="tablicaanalizywariancjianova.html">Tablica analizy wariancji - anova</a>
     </li>
     <li>
-      <a href="wektorylosowe.html">Wektory losowe</a>
-    </li>
-    <li>
-      <a href="analizawariancjiamanova.html">Analiza wariancji - manova</a>
+      <a href="curvefitting.html">Curve fitting</a>
     </li>
   </ul>
 </li>
@@ -455,6 +452,12 @@ div.tocify {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="wektorylosowe.html">Wektory losowe</a>
+    </li>
+    <li>
+      <a href="analizawariancjiamanova.html">Analiza wariancji - manova</a>
+    </li>
     <li>
       <a href="analizadyskryminacyjna.html">Analiza dyskryminacyjna</a>
     </li>
@@ -508,15 +511,15 @@ summary(model)</code></pre>
 ## 
 ## Parameters:
 ##   Estimate Std. Error t value Pr(&gt;|t|)    
-## a  18.6492     0.3741   49.85  &lt; 2e-16 ***
-## b   5.2859     0.5112   10.34 6.54e-14 ***
+## a  19.0238     0.1684 112.993  &lt; 2e-16 ***
+## b   0.5262     0.0820   6.417 5.31e-08 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 1.003 on 49 degrees of freedom
+## Residual standard error: 0.9064 on 49 degrees of freedom
 ## 
 ## Number of iterations to convergence: 6 
-## Achieved convergence tolerance: 6.064e-08</code></pre>
+## Achieved convergence tolerance: 2.439e-06</code></pre>
 <pre class="r"><code>plot(x,y)
 lines(x,predict(model),lty=2,col=&quot;red&quot;,lwd=3)</code></pre>
 <p><img src="modelnieliniowynls_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
@@ -534,15 +537,15 @@ summary(model2)</code></pre>
 ## 
 ## Parameters:
 ##    Estimate Std. Error t value Pr(&gt;|t|)    
-## b1   4.7007     0.3962  11.863  &lt; 2e-16 ***
-## b2  41.6708     5.1104   8.154 1.05e-15 ***
+## b1   4.8841     0.4376  11.161  &lt; 2e-16 ***
+## b2  42.3768     5.6630   7.483 1.59e-13 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 3.004 on 998 degrees of freedom
+## Residual standard error: 3.022 on 998 degrees of freedom
 ## 
-## Number of iterations to convergence: 7 
-## Achieved convergence tolerance: 2.174e-06</code></pre>
+## Number of iterations to convergence: 8 
+## Achieved convergence tolerance: 2.252e-06</code></pre>
 </div>
 </div>
 </div>

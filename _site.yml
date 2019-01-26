@@ -35,12 +35,14 @@ navbar:
           href: analizawariancjiaov.html
         - text: "Tablica analizy wariancji - anova"
           href: tablicaanalizywariancjianova.html
+        - text: "Curve fitting"
+          href: curvefitting.html
+    - text: "Dzień 3"
+      menu:
         - text: "Wektory losowe"
           href: wektorylosowe.html
         - text: "Analiza wariancji - manova"
           href: analizawariancjiamanova.html
-    - text: "Dzień 3"
-      menu:
         - text: "Analiza dyskryminacyjna"
           href: analizadyskryminacyjna.html
         - text: "Miniprojekty"

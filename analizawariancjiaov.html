@@ -456,7 +456,7 @@ div.tocify {
       <a href="wektorylosowe.html">Wektory losowe</a>
     </li>
     <li>
-      <a href="analizawariancjiamanova.html">Analiza wariancji - manova</a>
+      <a href="analizawariancjimanova.html">Analiza wariancji - manova</a>
     </li>
     <li>
       <a href="analizadyskryminacyjna.html">Analiza dyskryminacyjna</a>
@@ -654,6 +654,7 @@ ptukey(abs(center.trt2.trt1), 3, 27, lower.tail=FALSE)</code></pre>
 </div>
 <div id="wersja-dwuczynnikowa" class="section level2">
 <h2>Wersja dwuczynnikowa</h2>
+<p>Ramka <code>ToothGrowth</code> opisuje długość odontoblaststów (komórek produkujących zębinę) u świnek morskich. Zwierzęta otrzymywały witaminę C w dwóch postaciach (OJ - sok pomarańczowy, VC - kwas askorbinowy, zmienna <code>supp</code>). Zmienna <code>dose</code> zawiera informację o dawce.</p>
 <p>Kod do samodzielnego przeanalizowania:</p>
 <pre class="r"><code>dane2 &lt;- ToothGrowth
 dane2$dose &lt;- factor(dane2$dose, 

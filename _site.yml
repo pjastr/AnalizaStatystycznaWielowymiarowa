@@ -42,7 +42,7 @@ navbar:
         - text: "Wektory losowe"
           href: wektorylosowe.html
         - text: "Analiza wariancji - manova"
-          href: analizawariancjiamanova.html
+          href: analizawariancjimanova.html
         - text: "Analiza dyskryminacyjna"
           href: analizadyskryminacyjna.html
         - text: "Miniprojekty"

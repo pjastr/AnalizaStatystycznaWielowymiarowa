@@ -94,6 +94,7 @@ Wykład:
 * https://www.r-bloggers.com/two-way-analysis-of-variance-anova/, dostęp online 25.09.2019.
 * https://stats.stackexchange.com/questions/115304/interpreting-output-from-anova-when-using-lm-as-input, dostęp online 25.09.2019.
 * http://www.sthda.com/english/articles/40-regression-analysis/163-regression-with-categorical-variables-dummy-coding-essentials-in-r/#categorical-variables-with-more-than-two-levels, dostęp online 25.09.2019.
+* https://davetang.org/muse/2013/05/09/on-curve-fitting/, dostęp online 26.01.2019.
 
 
 

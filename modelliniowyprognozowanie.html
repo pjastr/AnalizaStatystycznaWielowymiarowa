@@ -456,7 +456,7 @@ div.tocify {
       <a href="wektorylosowe.html">Wektory losowe</a>
     </li>
     <li>
-      <a href="analizawariancjiamanova.html">Analiza wariancji - manova</a>
+      <a href="analizawariancjimanova.html">Analiza wariancji - manova</a>
     </li>
     <li>
       <a href="analizadyskryminacyjna.html">Analiza dyskryminacyjna</a>
@@ -613,21 +613,21 @@ new2&lt;-data.frame( youtube = yt, facebook=fb, newspaper=np )
 pred2p&lt;-predict(model, new2, interval = &quot;prediction&quot;)
 head(pred2p)</code></pre>
 <pre><code>##        fit       lwr      upr
-## 1 17.00240 12.924357 21.08044
-## 2 16.76483 12.745962 20.78370
-## 3 17.37471 13.348271 21.40116
-## 4 17.35011 13.267557 21.43267
-## 5 11.98697  7.960906 16.01303
-## 6 12.15170  8.130836 16.17257</code></pre>
+## 1 20.42166 16.334927 24.50839
+## 2 17.41158 13.345974 21.47719
+## 3 14.80057 10.702356 18.89879
+## 4 14.38258 10.263357 18.50180
+## 5 13.78433  9.749723 17.81894
+## 6 19.29308 15.186856 23.39931</code></pre>
 <pre class="r"><code>pred2c&lt;-predict(model, new2, interval = &quot;confidence&quot;)
 head(pred2c)</code></pre>
 <pre><code>##        fit      lwr      upr
-## 1 17.00240 16.15429 17.85051
-## 2 16.76483 16.27478 17.25488
-## 3 17.37471 16.82599 17.92344
-## 4 17.35011 16.48056 18.21967
-## 5 11.98697 11.44106 12.53287
-## 6 12.15170 11.64551 12.65790</code></pre>
+## 1 20.42166 19.53270 21.31062
+## 2 17.41158 16.62543 18.19774
+## 3 14.80057 13.86024 15.74090
+## 4 14.38258 13.35455 15.41061
+## 5 13.78433 13.17859 14.39007
+## 6 19.29308 18.31842 20.26775</code></pre>
 <pre class="r"><code>plot(pred2c[,1], ylab=&quot;&quot;, ylim=c(min(pred2p[,2]), max(pred2p[,3])), pch=20)
 lines(pred2c[,2], col=&quot;blue&quot;, lty=2)
 lines(pred2p[,2], col=&quot;red&quot;, lty=3)

@@ -34,5 +34,7 @@ header-includes: \usepackage[polish]{babel}
 [Wersja pdf](miniprojekty.pdf) 
 
 Zestaw A - [docx](ZestawA.docx), [pdf](ZestawA.pdf)
+
+Zestaw B - [docx](ZestawB.docx), [pdf](ZestawB.pdf)
 </div>
 

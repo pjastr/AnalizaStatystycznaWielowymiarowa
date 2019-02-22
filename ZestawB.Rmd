@@ -1,8 +1,8 @@
 ---
-title: "Zestaw A"
+title: "Zestaw B"
 output:
-  pdf_document: default
   word_document: default
+  pdf_document: default
 header-includes: \usepackage[polish]{babel}
 ---
 
@@ -11,7 +11,7 @@ Imię i nazwisko: .........................................................
 1. Załaduj do R następującą ramkę danych:
 
 ```r
-load(url("https://github.com/pjastr/ASW/raw/master/zestawA.rda"))
+load(url("https://github.com/pjastr/ASW/raw/master/zestawB.rda"))
 ```
 
 W ramce w kolumnie woda jest poziom wody w pewnym jeziorze. Pozostałe kolumny dotyczą średniej dobowej temperatury, sumy dobowej opadów i wilgotności.
@@ -33,7 +33,7 @@ Wiadomo, że poziom wody zależy od pozostałych zmiennych. Dokonaj analizy regr
 2. Załaduj do R następującą ramkę danych:
 
 ```r
-load(url("https://github.com/pjastr/ASW/raw/master/zestawA2.rda"))
+load(url("https://github.com/pjastr/ASW/raw/master/zestawB2.rda"))
 ```
 
 Wiedząc, że zmienna y zależy wielomianowo od x (stopień jest mniejszy lub równy 4), przeprowadź analizę regresji wielomianowej. Wybierz i zapisz poniżej najbardziej dopasowany model. Wypisz parametry najlepszego modelu.

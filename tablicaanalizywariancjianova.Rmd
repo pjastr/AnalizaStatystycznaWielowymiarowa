@@ -81,7 +81,7 @@ p<-1-pf(f, 1,395)
 p
 ```
 
-Czemu nie wyszło to tak jak wcześniej? Wynika to z faktu, jak R intrepretuje zmienne jakościowe. Ostatni level zmiennej `sex` to `Male`, więc ma przypisaną wartość 1, a potem (od końca) `Female` jako 0. Model liniowy jest zapisano jako $y=\beta_0+\beta_1 x +\varepsilon$. Wtedy $\beta_0+\beta_1$ dotyczy `Male`, $\beta_0$ dotyczy `Female`. Samo $\beta_1$ dotyczy różnicy między `Male` a `Female`.
+Czemu nie wyszło to tak jak wcześniej? Wynika to z faktu, jak R interpretuje zmienne jakościowe. Ostatni level zmiennej `sex` to `Male`, więc ma przypisaną wartość 1, a potem (od końca) `Female` jako 0. Model liniowy jest zapisano jako $y=\beta_0+\beta_1 x +\varepsilon$. Wtedy $\beta_0+\beta_1$ dotyczy `Male`, $\beta_0$ dotyczy `Female`. Samo $\beta_1$ dotyczy różnicy między `Male` a `Female`.
 
 Jeśli zmienna ma więcej niż 2 wartości cechy, to jest zamieniana na więcej zmiennych o dwóch wartościach (levelach).
 

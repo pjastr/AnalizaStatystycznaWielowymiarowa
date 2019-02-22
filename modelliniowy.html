@@ -641,7 +641,7 @@ head(m %*% x)</code></pre>
 ## [4,] -2.359224e-16  2.091660e-13 -1.249001e-15 4.567874e-14
 ## [5,]  1.023487e-16 -3.175238e-14 -2.490369e-14 7.316370e-14
 ## [6,] -1.242062e-15  3.108624e-13 -3.716472e-14 5.159762e-14</code></pre>
-<p>Teraz możemy obliczć reszty (residua):</p>
+<p>Teraz możemy obliczyć reszty (residua):</p>
 <p><span class="math display">\[ \hat{\varepsilon} = y - \hat{y} = y - X\hat{\beta} = My = M(X\beta+\varepsilon) = (MX)\beta + M\varepsilon = M\varepsilon.\]</span> W R wygląda to następująco:</p>
 <pre class="r"><code>eh&lt;-y-yh
 head(eh)</code></pre>
@@ -711,7 +711,7 @@ ro2</code></pre>
 <p>Powtórzmy i wprowadźmy nowe oznaczenia:</p>
 <ul>
 <li><span class="math inline">\(n\)</span> - liczba obserwacji</li>
-<li><span class="math inline">\(p\)</span> - liczba parametrów regresji (w modelu liniowym to liczba zmiennych objaśniająch+1 zgodnie z konwencją)</li>
+<li><span class="math inline">\(p\)</span> - liczba parametrów regresji (w modelu liniowym to liczba zmiennych objaśniających+1 zgodnie z konwencją)</li>
 <li><span class="math inline">\(SSM\)</span> - skorygowana suma kwadratów modelu <span class="math display">\[SSM=\sum_{i=1}^n ( \hat{y}_i-\overline{y} )^2\]</span></li>
 </ul>
 <pre class="r"><code>ssm&lt;-sum((yh-ym)^2)
@@ -782,12 +782,12 @@ p</code></pre>
 <pre><code>## value 
 ##     0</code></pre>
 <p>W naszym wypadku jest to “bliskie” zeru, więc możemy przyjąć, że się zgadza.</p>
-<p>Jeśli <span class="math inline">\(p\leqslant \alpha\)</span> odrzucamy <span class="math inline">\(H_0\)</span> przyjując <span class="math inline">\(H_1\)</span>. W przeciwnym wypadku nie ma podstaw by odrzucić <span class="math inline">\(H_0\)</span>.</p>
+<p>Jeśli <span class="math inline">\(p\leqslant \alpha\)</span> odrzucamy <span class="math inline">\(H_0\)</span> przyjmując <span class="math inline">\(H_1\)</span>. W przeciwnym wypadku nie ma podstaw by odrzucić <span class="math inline">\(H_0\)</span>.</p>
 </div>
 <div id="t-test" class="section level2">
 <h2>t-test</h2>
 <p>Przypomnijmy, że <span class="math display">\[\hat{\beta}= ( X^T X )^{-1}  X^T  y.\]</span></p>
-<p>Wariancja wektora współczynników: <span class="math display">\[\operatorname(VAR) (\hat{\beta}) = \sigma^2 (X^TX)^{-1}.\]</span> Zamieniając na esytmator nieobciążony: <span class="math display">\[\widehat{\operatorname(VAR)}(\hat{\beta}) = s^2 (X^TX)^{-1} \]</span> By otrzymać odchylenie standardowe poszczególnych współczynników, wybieramy elementy na głównej przekątnej ostatniej macierzy i potem je pierwiastkujemy.</p>
+<p>Wariancja wektora współczynników: <span class="math display">\[\operatorname(VAR) (\hat{\beta}) = \sigma^2 (X^TX)^{-1}.\]</span> Zamieniając na estymator nieobciążony: <span class="math display">\[\widehat{\operatorname(VAR)}(\hat{\beta}) = s^2 (X^TX)^{-1} \]</span> By otrzymać odchylenie standardowe poszczególnych współczynników, wybieramy elementy na głównej przekątnej ostatniej macierzy i potem je pierwiastkujemy.</p>
 <pre class="r"><code>v&lt;-s2 * solve(t(x) %*% x)
 v</code></pre>
 <pre><code>##                               youtube      facebook     newspaper
@@ -819,7 +819,7 @@ tstat</code></pre>
 <pre class="r"><code>summary(model)$coefficients[,3]</code></pre>
 <pre><code>## (Intercept)     youtube    facebook   newspaper 
 ##   9.4222884  32.8086244  21.8934961  -0.1767146</code></pre>
-<p>Na koniec liczymy odpowiednie prawopodobieństwo (liczba stopni swobody to <span class="math inline">\(n-p\)</span>):</p>
+<p>Na koniec liczymy odpowiednie prawdopodobieństwo (liczba stopni swobody to <span class="math inline">\(n-p\)</span>):</p>
 <pre class="r"><code>2 * pt(abs(tstat), 196, lower.tail = FALSE)</code></pre>
 <pre><code>##                   [,1]
 ##           1.267295e-17
@@ -829,8 +829,8 @@ tstat</code></pre>
 <pre class="r"><code>summary(model)$coefficients[,4]</code></pre>
 <pre><code>##  (Intercept)      youtube     facebook    newspaper 
 ## 1.267295e-17 1.509960e-81 1.505339e-54 8.599151e-01</code></pre>
-<p>Test <span class="math inline">\(t\)</span> pozwala zweryfikować istotność oszacownia parametru dla każdej ze zmiennej objaśniającej. <span class="math display">\[H_0: \qquad \beta_i=0\]</span> <span class="math display">\[H_1: \qquad \beta_i\neq 0\]</span></p>
-<p>Jeśli prawodpobieństwo jest mniejsze niż poziom ufności (domyślnie <span class="math inline">\(\alpha=0,05\)</span>) to odrzucamy <span class="math inline">\(H_0\)</span> na rzecz <span class="math inline">\(H_1\)</span> (odpowiednia zmienna objaśniająca ma wpływ na zmienną objaśnianą). W przeciwnym wypadku nie mamy podstaw do odrzucenia <span class="math inline">\(H_0\)</span> (brak wpływu).</p>
+<p>Test <span class="math inline">\(t\)</span> pozwala zweryfikować istotność oszacowania parametru dla każdej ze zmiennej objaśniającej. <span class="math display">\[H_0: \qquad \beta_i=0\]</span> <span class="math display">\[H_1: \qquad \beta_i\neq 0\]</span></p>
+<p>Jeśli prawdopodobieństwo jest mniejsze niż poziom ufności (domyślnie <span class="math inline">\(\alpha=0,05\)</span>) to odrzucamy <span class="math inline">\(H_0\)</span> na rzecz <span class="math inline">\(H_1\)</span> (odpowiednia zmienna objaśniająca ma wpływ na zmienną objaśnianą). W przeciwnym wypadku nie mamy podstaw do odrzucenia <span class="math inline">\(H_0\)</span> (brak wpływu).</p>
 <p>W rozważanym przykładzie jedynie w przypadku zmiennej <code>newspaper</code> przyjmujemy <span class="math inline">\(H_0\)</span>. Nie jest zatem znacząca w modelu regresji wielokrotnej. Oznacza to, że w przypadku ustalonej kwoty budżetu reklamowego <code>youtube</code> i <code>facebook</code> zmiany w budżecie reklamowym newspaper nie wpłyną znacząco na wyniki sprzedaży. Możemy zatem zmienną <code>newspaper</code> usunąć z modelu:</p>
 <pre class="r"><code>model2  &lt;- lm(sales ~ youtube + facebook, data = marketing)
 summary(model2)</code></pre>

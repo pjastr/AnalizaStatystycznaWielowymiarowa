@@ -1,2 +1,2 @@
 \babel@toc {polish}{}
-\contentsline {section}{Regresja wielowymiarowa}{1}{section*.2}
+\contentsline {section}{Regresja wielowymiarowa}{1}{section*.2}% 

@@ -92,7 +92,7 @@ Wykres pokazuje jednorodność wariancji. Cel: linia ciągła jest pozioma, punk
 
 # Ćwiczenia
 
-1. Wygerenuj w R idealny rozkład zgodny z liniową regresją wielokrotną np. za pomocą kod:
+1. Wygeneruj w R idealny rozkład zgodny z liniową regresją wielokrotną np. za pomocą kod:
 
 ```{r}
 n <- 1000      

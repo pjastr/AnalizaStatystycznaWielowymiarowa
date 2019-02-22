@@ -145,7 +145,7 @@ m<-diag(200)-p
 head(m %*% x)
 ```
 
-Teraz możemy obliczć reszty (residua):
+Teraz możemy obliczyć reszty (residua):
 
 $$ \hat{\varepsilon} = y - \hat{y} = y - X\hat{\beta} = My = M(X\beta+\varepsilon) = (MX)\beta + M\varepsilon = M\varepsilon.$$
 W R wygląda to następująco:
@@ -216,7 +216,7 @@ summary(model)$adj.r.squared
 Powtórzmy i wprowadźmy nowe oznaczenia:
 
 * $n$ - liczba obserwacji
-* $p$ - liczba parametrów regresji (w modelu liniowym to liczba zmiennych objaśniająch+1 zgodnie z konwencją)
+* $p$ - liczba parametrów regresji (w modelu liniowym to liczba zmiennych objaśniających+1 zgodnie z konwencją)
 * $SSM$ - skorygowana suma kwadratów modelu
 $$SSM=\sum_{i=1}^n ( \hat{y}_i-\overline{y} )^2$$
 ```{r}
@@ -307,7 +307,7 @@ fstat<-summary(model)$fstatistic
 ```
 W naszym wypadku jest to "bliskie" zeru, więc możemy przyjąć, że się zgadza.
 
-Jeśli $p\leqslant \alpha$ odrzucamy $H_0$ przyjując $H_1$. W przeciwnym wypadku nie ma podstaw by odrzucić $H_0$.
+Jeśli $p\leqslant \alpha$ odrzucamy $H_0$ przyjmując $H_1$. W przeciwnym wypadku nie ma podstaw by odrzucić $H_0$.
 
 ## t-test
 
@@ -316,7 +316,7 @@ $$\hat{\beta}= ( X^T X )^{-1}  X^T  y.$$
 
 Wariancja wektora współczynników:
 $$\operatorname(VAR) (\hat{\beta}) = \sigma^2 (X^TX)^{-1}.$$
-Zamieniając na esytmator nieobciążony:
+Zamieniając na estymator nieobciążony:
 $$\widehat{\operatorname(VAR)}(\hat{\beta}) = s^2 (X^TX)^{-1} $$
 By otrzymać odchylenie standardowe poszczególnych współczynników, wybieramy elementy na głównej przekątnej ostatniej macierzy i potem je pierwiastkujemy.
 
@@ -337,18 +337,18 @@ tstat
 summary(model)$coefficients[,3]
 ```
 
-Na koniec liczymy odpowiednie prawopodobieństwo (liczba stopni swobody to $n-p$):
+Na koniec liczymy odpowiednie prawdopodobieństwo (liczba stopni swobody to $n-p$):
 
 ```{r}
 2 * pt(abs(tstat), 196, lower.tail = FALSE)
 summary(model)$coefficients[,4]
 ```
 
-Test $t$ pozwala zweryfikować istotność oszacownia parametru dla każdej ze zmiennej objaśniającej.
+Test $t$ pozwala zweryfikować istotność oszacowania parametru dla każdej ze zmiennej objaśniającej.
 $$H_0: \qquad \beta_i=0$$
 $$H_1: \qquad \beta_i\neq 0$$
 
-Jeśli prawodpobieństwo jest mniejsze niż poziom ufności (domyślnie $\alpha=0,05$) to odrzucamy $H_0$ na rzecz $H_1$ (odpowiednia zmienna objaśniająca ma wpływ na zmienną objaśnianą). W przeciwnym wypadku nie mamy podstaw do odrzucenia $H_0$ (brak wpływu).
+Jeśli prawdopodobieństwo jest mniejsze niż poziom ufności (domyślnie $\alpha=0,05$) to odrzucamy $H_0$ na rzecz $H_1$ (odpowiednia zmienna objaśniająca ma wpływ na zmienną objaśnianą). W przeciwnym wypadku nie mamy podstaw do odrzucenia $H_0$ (brak wpływu).
 
 W rozważanym przykładzie jedynie w przypadku zmiennej `newspaper` przyjmujemy $H_0$.
 Nie jest zatem znacząca w modelu regresji wielokrotnej. Oznacza to, że w przypadku ustalonej kwoty budżetu reklamowego `youtube` i `facebook` zmiany w budżecie reklamowym newspaper nie wpłyną znacząco na wyniki sprzedaży. Możemy zatem zmienną `newspaper` usunąć z modelu:

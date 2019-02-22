@@ -500,7 +500,34 @@ div.tocify {
 <div id="analiza-wariancji---manova" class="section level1">
 <h1>Analiza wariancji - manova</h1>
 <p><a href="analizawariancjiamanova.pdf">Wersja pdf</a></p>
-Strona w budowie.
+<p>Do tej pory rozważaliśmy sytuację, kiedy zmienna zależna była jedna, a zmiennych niezależnych było kilka.</p>
+<p>Odwróćmy sytuację. Mamy kilka zmiennych zależnych i jedną zmienną niezależną.</p>
+<p>Załadujmy dane:</p>
+<pre class="r"><code>dane&lt;-iris
+head(iris)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<p>Spójrzmy na rysunek:</p>
+<div class="figure">
+<img src="iris.png" />
+
+</div>
+<p><sub><sup><a href="https://melindahiggins2000.github.io/N741UnsupervisedLearning/UnsupervisedLearning.html" class="uri">https://melindahiggins2000.github.io/N741UnsupervisedLearning/UnsupervisedLearning.html</a></sup></sub></p>
+<pre class="r"><code>sepl &lt;- iris$Sepal.Length
+petl &lt;- iris$Petal.Length
+model &lt;- manova(cbind(Sepal.Length, Petal.Length) ~ Species, data = iris)
+summary(model)</code></pre>
+<pre><code>##            Df Pillai approx F num Df den Df    Pr(&gt;F)    
+## Species     2 0.9885   71.829      4    294 &lt; 2.2e-16 ***
+## Residuals 147                                            
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Hipoteza zerowa: średnie w poszczególnych grupach są równe. Hipoteza alternatywna: co najmniej jedna średnia jest inna od pozostałych.</p>
 </div>
 </div>
 

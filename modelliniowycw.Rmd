@@ -52,6 +52,6 @@ model2 = lm(Volume~Girth,data=trees)
 summary(model2)
 ```
 
-Przeanalizuj dobrość modelu.
+Przeanalizuj dobroć modelu.
 </div>
 

@@ -601,7 +601,7 @@ f</code></pre>
 <pre class="r"><code>p&lt;-1-pf(f, 1,395)
 p</code></pre>
 <pre><code>## [1] 0.005667107</code></pre>
-<p>Czemu nie wyszło to tak jak wcześniej? Wynika to z faktu, jak R intrepretuje zmienne jakościowe. Ostatni level zmiennej <code>sex</code> to <code>Male</code>, więc ma przypisaną wartość 1, a potem (od końca) <code>Female</code> jako 0. Model liniowy jest zapisano jako <span class="math inline">\(y=\beta_0+\beta_1 x +\varepsilon\)</span>. Wtedy <span class="math inline">\(\beta_0+\beta_1\)</span> dotyczy <code>Male</code>, <span class="math inline">\(\beta_0\)</span> dotyczy <code>Female</code>. Samo <span class="math inline">\(\beta_1\)</span> dotyczy różnicy między <code>Male</code> a <code>Female</code>.</p>
+<p>Czemu nie wyszło to tak jak wcześniej? Wynika to z faktu, jak R interpretuje zmienne jakościowe. Ostatni level zmiennej <code>sex</code> to <code>Male</code>, więc ma przypisaną wartość 1, a potem (od końca) <code>Female</code> jako 0. Model liniowy jest zapisano jako <span class="math inline">\(y=\beta_0+\beta_1 x +\varepsilon\)</span>. Wtedy <span class="math inline">\(\beta_0+\beta_1\)</span> dotyczy <code>Male</code>, <span class="math inline">\(\beta_0\)</span> dotyczy <code>Female</code>. Samo <span class="math inline">\(\beta_1\)</span> dotyczy różnicy między <code>Male</code> a <code>Female</code>.</p>
 <p>Jeśli zmienna ma więcej niż 2 wartości cechy, to jest zamieniana na więcej zmiennych o dwóch wartościach (levelach).</p>
 <pre class="r"><code>levels(Salaries$rank)</code></pre>
 <pre><code>## [1] &quot;AsstProf&quot;  &quot;AssocProf&quot; &quot;Prof&quot;</code></pre>

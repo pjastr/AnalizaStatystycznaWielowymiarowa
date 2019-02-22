@@ -33,6 +33,65 @@ header-includes: \usepackage[polish]{babel}
 
 [Wersja pdf](analizadyskryminacyjna.pdf) 
 
-Strona w budowie.
+Analiza dyskryminacyjna (ang. discriminant analysis) – jej zadaniem jest rozstrzyganie, które zmienne niezależne (predyktory) w najlepszy sposób dzielą dany zbiór przypadków na występujące w naturalny sposób grupy, opisane jakościową zmienną zależną.
+
+W metodzie tej możemy wyróżnić dwa główne etapy:
+
+* etap uczenia / budowy modelu – w którym znajdujemy reguły klasyfikacyjne w oparciu o tak zwany zbiór uczący (próbę statystyczną)
+* etap klasyfikacji / wykorzystania modelu – w którym dokonujemy klasyfikacji zasadniczego zbioru obiektów, których przynależność jest nam nieznana, w oparciu o znalezione charakterystyki klas.
+
+Zostanie opisany model liniowy (użyjemy liniowej kombinacji predyktorów aby przewidzieć klasę obserwacji).
+
+Załadujmy potrzebne biblioteki:
+
+```{r message=FALSE}
+library(tidyverse)
+library(caret)
+```
+
+Załadujmy ponownie ramkę `iris` i podzielmy ją na tzw. część treningową (uczącą) i testową.
+
+```{r}
+data("iris")
+
+set.seed(123)
+training.samples <- createDataPartition(iris$Species,p = 0.8, list = FALSE)
+train.data <- iris[training.samples, ]
+test.data <- iris[-training.samples, ]
+```
+
+Wykonajmy normalizację danych:
+
+```{r}
+preproc.param <- preProcess(train.data,method = c("center", "scale"))
+train.transformed <- predict(preproc.param,train.data)
+head(train.transformed)
+test.transformed <- predict(preproc.param,test.data)
+head(test.transformed)
+```
+
+Algorytm liniowy na starcie szuka kierunków, które "maksymalizują" oddzielenie klas/grup. Następnie kierunki są zastosowane na danych testowych. Kierunki (zwane liniowymi dyskryminatorami) są liniową kombinacją predyktorów.
+
+```{r message=FALSE}
+library(MASS)
+```
+
+```{r}
+model <- lda(Species~., data = train.transformed)
+predictions <- predict(model,test.transformed)
+mean(predictions$class==test.transformed$Species)
+model
+plot(model)
+predictions <- predict(model,test.transformed)
+names(predictions)
+head(predictions$class, 6)
+head(predictions$posterior, 6) 
+head(predictions$x, 3) 
+lda.data <- cbind(train.transformed, predict(model)$x)
+plot(predict(model)$x, pch=20, col=train.transformed$Species)
+plot(predictions$x, pch=20, col=predictions$class)
+```
+
+
 </div>
 

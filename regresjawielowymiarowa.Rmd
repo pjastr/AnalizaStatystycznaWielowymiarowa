@@ -50,7 +50,7 @@ Przykłady regresji wielowymiarowej:
 
 * Cena mieszkania zależy od.... Pytanie: jak udział poszczególnych elementów wpływa na to, aby cena rynkowa była najwyższa?
 
-* Udzielenie kredytu zależy od .... Pytanie: jak udział poszczególnych elementów wpłtwa na decyzję o przyznaniu lub nie kredytu? *czy to na pewno regresja?*
+* Udzielenie kredytu zależy od .... Pytanie: jak udział poszczególnych elementów wpływa na decyzję o przyznaniu lub nie kredytu? *czy to na pewno regresja?*
 
 W ujęcie "naukowym", badania statystyczne mają w ogólności wyjaśniać zależności pomiędzy różnymi cechami badanej populacji. 
 

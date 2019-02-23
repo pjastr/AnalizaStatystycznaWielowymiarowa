@@ -39,6 +39,8 @@ navbar:
           href: curvefitting.html
     - text: "Dzień 3"
       menu:
+        - text: "Ćwiczenie"
+          href: cw3.html
         - text: "Wektory losowe"
           href: wektorylosowe.html
         - text: "Analiza wariancji - manova"

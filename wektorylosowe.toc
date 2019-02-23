@@ -1,0 +1,2 @@
+\babel@toc {polish}{}
+\contentsline {section}{Wektory losowe}{1}{section*.2}% 

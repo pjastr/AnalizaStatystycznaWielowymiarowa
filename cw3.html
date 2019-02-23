@@ -11,7 +11,7 @@
 
 
 
-<title>Dzień 3 - Analiza dyskryminacyjna</title>
+<title>Dzień 3 - Ćwiczenie</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -481,7 +481,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Dzień 3 - Analiza dyskryminacyjna</h1>
+<h1 class="title toc-ignore">Dzień 3 - Ćwiczenie</h1>
 
 </div>
 
@@ -500,102 +500,12 @@ div.tocify {
 }
 
 </style>
-<div id="analiza-dyskryminacyjna" class="section level1">
-<h1>Analiza dyskryminacyjna</h1>
-<p><a href="analizadyskryminacyjna.pdf">Wersja pdf</a></p>
-<p>Analiza dyskryminacyjna (ang. discriminant analysis) – jej zadaniem jest rozstrzyganie, które zmienne niezależne (predyktory) w najlepszy sposób dzielą dany zbiór przypadków na występujące w naturalny sposób grupy, opisane jakościową zmienną zależną.</p>
-<p>W metodzie tej możemy wyróżnić dwa główne etapy:</p>
-<ul>
-<li>etap uczenia / budowy modelu – w którym znajdujemy reguły klasyfikacyjne w oparciu o tak zwany zbiór uczący (próbę statystyczną)</li>
-<li>etap klasyfikacji / wykorzystania modelu – w którym dokonujemy klasyfikacji zasadniczego zbioru obiektów, których przynależność jest nam nieznana, w oparciu o znalezione charakterystyki klas.</li>
-</ul>
-<p>Zostanie opisany model liniowy (użyjemy liniowej kombinacji predyktorów aby przewidzieć klasę obserwacji).</p>
-<p>Załadujmy potrzebne biblioteki:</p>
-<pre class="r"><code>library(tidyverse)
-library(caret)</code></pre>
-<p>Załadujmy ponownie ramkę <code>iris</code> i podzielmy ją na tzw. część treningową (uczącą) i testową.</p>
-<pre class="r"><code>data(&quot;iris&quot;)
-
-set.seed(123)
-training.samples &lt;- createDataPartition(iris$Species,p = 0.8, list = FALSE)
-train.data &lt;- iris[training.samples, ]
-test.data &lt;- iris[-training.samples, ]</code></pre>
-<p>Wykonajmy normalizację danych:</p>
-<pre class="r"><code>preproc.param &lt;- preProcess(train.data,method = c(&quot;center&quot;, &quot;scale&quot;))
-train.transformed &lt;- predict(preproc.param,train.data)
-head(train.transformed)</code></pre>
-<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1   -0.8344991  1.15462417    -1.328132   -1.311924  setosa
-## 2   -1.0673826 -0.07152539    -1.328132   -1.311924  setosa
-## 3   -1.3002661  0.41893443    -1.384789   -1.311924  setosa
-## 4   -1.4167078  0.17370452    -1.271475   -1.311924  setosa
-## 7   -1.4167078  0.90939426    -1.328132   -1.180732  setosa
-## 8   -0.9509409  0.90939426    -1.271475   -1.311924  setosa</code></pre>
-<pre class="r"><code>test.transformed &lt;- predict(preproc.param,test.data)
-head(test.transformed)</code></pre>
-<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 5    -0.9509409   1.3998541    -1.328132   -1.311924  setosa
-## 6    -0.4851739   2.1355438    -1.158162   -1.049539  setosa
-## 10   -1.0673826   0.1737045    -1.271475   -1.443117  setosa
-## 12   -1.1838243   0.9093943    -1.214819   -1.311924  setosa
-## 16   -0.1358487   3.3616934    -1.271475   -1.049539  setosa
-## 17   -0.4851739   2.1355438    -1.384789   -1.049539  setosa</code></pre>
-<p>Algorytm liniowy na starcie szuka kierunków, które “maksymalizują” oddzielenie klas/grup. Następnie kierunki są zastosowane na danych testowych. Kierunki (zwane liniowymi dyskryminatorami) są liniową kombinacją predyktorów.</p>
-<pre class="r"><code>library(MASS)</code></pre>
-<pre class="r"><code>model &lt;- lda(Species~., data = train.transformed)
-predictions &lt;- predict(model,test.transformed)
-mean(predictions$class==test.transformed$Species)</code></pre>
-<pre><code>## [1] 1</code></pre>
-<pre class="r"><code>model</code></pre>
-<pre><code>## Call:
-## lda(Species ~ ., data = train.transformed)
-## 
-## Prior probabilities of groups:
-##     setosa versicolor  virginica 
-##  0.3333333  0.3333333  0.3333333 
-## 
-## Group means:
-##            Sepal.Length Sepal.Width Petal.Length Petal.Width
-## setosa       -1.0120728   0.7867793   -1.2927218  -1.2496079
-## versicolor    0.1174121  -0.6478157    0.2724253   0.1541511
-## virginica     0.8946607  -0.1389636    1.0202965   1.0954568
-## 
-## Coefficients of linear discriminants:
-##                     LD1         LD2
-## Sepal.Length  0.9108023  0.03183011
-## Sepal.Width   0.6477657  0.89852536
-## Petal.Length -4.0816032 -2.22724052
-## Petal.Width  -2.3128276  2.65441936
-## 
-## Proportion of trace:
-##    LD1    LD2 
-## 0.9905 0.0095</code></pre>
-<pre class="r"><code>plot(model)</code></pre>
-<p><img src="analizadyskryminacyjna_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<pre class="r"><code>predictions &lt;- predict(model,test.transformed)
-names(predictions)</code></pre>
-<pre><code>## [1] &quot;class&quot;     &quot;posterior&quot; &quot;x&quot;</code></pre>
-<pre class="r"><code>head(predictions$class, 6)</code></pre>
-<pre><code>## [1] setosa setosa setosa setosa setosa setosa
-## Levels: setosa versicolor virginica</code></pre>
-<pre class="r"><code>head(predictions$posterior, 6) </code></pre>
-<pre><code>##    setosa   versicolor    virginica
-## 5       1 5.718110e-24 5.016023e-46
-## 6       1 9.459855e-23 1.638348e-43
-## 10      1 7.615603e-20 2.693591e-41
-## 12      1 1.495465e-19 3.345580e-40
-## 16      1 7.132457e-30 1.009441e-52
-## 17      1 8.379340e-27 5.833391e-49</code></pre>
-<pre class="r"><code>head(predictions$x, 3) </code></pre>
-<pre><code>##         LD1        LD2
-## 5  8.495822  0.7032086
-## 6  8.095995  1.6969837
-## 10 7.667684 -0.8766525</code></pre>
-<pre class="r"><code>lda.data &lt;- cbind(train.transformed, predict(model)$x)
-plot(predict(model)$x, pch=20, col=train.transformed$Species)</code></pre>
-<p><img src="analizadyskryminacyjna_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
-<pre class="r"><code>plot(predictions$x, pch=20, col=predictions$class)</code></pre>
-<p><img src="analizadyskryminacyjna_files/figure-html/unnamed-chunk-5-3.png" width="672" /></p>
+<div id="cwiczenie" class="section level1">
+<h1>Ćwiczenie</h1>
+<p><a href="cw3.pdf">Wersja pdf</a></p>
+<p>Załaduj do R poniższą ramkę danych:</p>
+<pre class="r"><code>load(url(&quot;https://github.com/pjastr/ASW/raw/master/cw3.rda&quot;))</code></pre>
+<p>W ramce są zawarte informacje o maksymalnej kwocie kredytu (pierwsza kolumna) względem pozostałych cech. Wykorzystaj metody regresji liniowej, aby wybrać najbardziej dopasowany model.</p>
 </div>
 </div>
 

@@ -1,15 +1,15 @@
 ---
 title: "Dzień 3 - Wektory losowe"
 output:
-  pdf_document:
-    toc: yes
-    toc_depth: '5'
   html_document:
     toc: yes
     toc_depth: 5
     toc_float:
       collapsed: no
       smooth_scroll: no
+  pdf_document:
+    toc: yes
+    toc_depth: '5'
 header-includes: \usepackage[polish]{babel}
 ---
 <style type="text/css">
@@ -36,7 +36,7 @@ header-includes: \usepackage[polish]{babel}
 Wektor $\mathbf{X} = (X_1, \ldots, X_n)$, którego każda współrzędna jest zmienną losową, nazywamy **$n$-wymiarowym wektorem losowym** (krótko – **wektorem losowym**).
 
 Funkcję $F : \mathbb{R}^n \rightarrow [0, 1]$ określoną wzorem
-$$F(x_1, \ldots, x_n) = P({\omega : X_1(\omega) ≤ x_1, \ldots , X_n(\omega) ≤ x_n})$$
+$$F(x_1, \ldots, x_n) = P({\omega : X_1(\omega) \leqslant x_1, \ldots , X_n(\omega) \leqslant x_n})$$
 nazywamy **dystrybuantą** rozkładu łącznego wektora losowego $\mathbf{X} = (X_1, \ldots, X_n)$ lub krótko
 dystrybuantą wektora losowego $\mathbf{X}$.
 

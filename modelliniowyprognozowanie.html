@@ -453,6 +453,9 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="cw3.html">Ćwiczenie</a>
+    </li>
+    <li>
       <a href="wektorylosowe.html">Wektory losowe</a>
     </li>
     <li>
@@ -613,21 +616,21 @@ new2&lt;-data.frame( youtube = yt, facebook=fb, newspaper=np )
 pred2p&lt;-predict(model, new2, interval = &quot;prediction&quot;)
 head(pred2p)</code></pre>
 <pre><code>##        fit       lwr      upr
-## 1 20.42166 16.334927 24.50839
-## 2 17.41158 13.345974 21.47719
-## 3 14.80057 10.702356 18.89879
-## 4 14.38258 10.263357 18.50180
-## 5 13.78433  9.749723 17.81894
-## 6 19.29308 15.186856 23.39931</code></pre>
+## 1 18.27201 14.114844 22.42918
+## 2 13.92545  9.888016 17.96288
+## 3 17.88640 13.818078 21.95472
+## 4 15.30945 11.240940 19.37796
+## 5 18.39750 14.367768 22.42723
+## 6 11.74739  7.607411 15.88737</code></pre>
 <pre class="r"><code>pred2c&lt;-predict(model, new2, interval = &quot;confidence&quot;)
 head(pred2c)</code></pre>
 <pre><code>##        fit      lwr      upr
-## 1 20.42166 19.53270 21.31062
-## 2 17.41158 16.62543 18.19774
-## 3 14.80057 13.86024 15.74090
-## 4 14.38258 13.35455 15.41061
-## 5 13.78433 13.17859 14.39007
-## 6 19.29308 18.31842 20.26775</code></pre>
+## 1 18.27201 17.10116 19.44287
+## 2 13.92545 13.30118 14.54972
+## 3 17.88640 17.08633 18.68647
+## 4 15.30945 14.50844 16.11046
+## 5 18.39750 17.82514 18.96986
+## 6 11.74739 10.63911 12.85566</code></pre>
 <pre class="r"><code>plot(pred2c[,1], ylab=&quot;&quot;, ylim=c(min(pred2p[,2]), max(pred2p[,3])), pch=20)
 lines(pred2c[,2], col=&quot;blue&quot;, lty=2)
 lines(pred2p[,2], col=&quot;red&quot;, lty=3)

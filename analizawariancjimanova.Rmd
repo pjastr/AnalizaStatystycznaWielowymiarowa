@@ -1,15 +1,15 @@
 ---
 title: "Dzień 3 - Analiza wariancji - manova"
 output:
+  pdf_document:
+    toc: yes
+    toc_depth: '5'
   html_document:
     toc: yes
     toc_depth: 5
     toc_float:
       collapsed: no
       smooth_scroll: no
-  pdf_document:
-    toc: yes
-    toc_depth: '5'
 header-includes: \usepackage[polish]{babel}
 ---
 <style type="text/css">

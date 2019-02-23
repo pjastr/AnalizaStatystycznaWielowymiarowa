@@ -1,5 +1,5 @@
 ---
-title: "Dzień 3 - Miniprojekty"
+title: "DzieĹ„ 3 - Miniprojekty"
 output:
   html_document:
     toc: yes
@@ -8,6 +8,9 @@ output:
       collapsed: no
       smooth_scroll: no
   pdf_document:
+    toc: yes
+    toc_depth: '5'
+  word_document:
     toc: yes
     toc_depth: '5'
 header-includes: \usepackage[polish]{babel}
@@ -36,5 +39,7 @@ header-includes: \usepackage[polish]{babel}
 Zestaw A - [docx](ZestawA.docx), [pdf](ZestawA.pdf)
 
 Zestaw B - [docx](ZestawB.docx), [pdf](ZestawB.pdf)
+
+Zestaw C - [docx](ZestawC.docx), [pdf](ZestawC.pdf)
 </div>
 

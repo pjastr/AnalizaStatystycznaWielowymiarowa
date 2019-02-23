@@ -1,5 +1,5 @@
 ---
-title: "DzieĹ„ 3 - Miniprojekty"
+title: "Dzień 3 - Miniprojekty"
 output:
   html_document:
     toc: yes
@@ -8,9 +8,6 @@ output:
       collapsed: no
       smooth_scroll: no
   pdf_document:
-    toc: yes
-    toc_depth: '5'
-  word_document:
     toc: yes
     toc_depth: '5'
 header-includes: \usepackage[polish]{babel}
